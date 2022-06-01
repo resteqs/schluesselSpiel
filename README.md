@@ -1,2 +1,2 @@
 # schluessel
-SpielEin Spiel der Q11
+Ein Spiel der Q11
