@@ -23,9 +23,9 @@ public class BildschirmFenster {
 	{
 		//Erstellt das Fenster
 		window = new JFrame();
-		//Setzt den Titel der über dem Fenster steht auf "Keymaster"
+		//Setzt den Titel, der über dem Fenster steht auf "Keymaster"
 		window.setTitle("Keymaster");
-		//Legt fest, dass das Programm aufhört wenn das Fenster geschlossen wird
+		//Legt fest, dass das Programm aufhört, wenn das Fenster geschlossen wird
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Legt die größe fest 
 		window.setSize(700,700); //To do: richtige Fenstergröße eingeben
@@ -36,7 +36,7 @@ public class BildschirmFenster {
 	}
 	public void addToMenu(JPanel jPanel)
 	{
-		//Falls berreits die Grafikelemente von einem anderen Menu existieren werden diese aus dem Fenster entfernt
+		//Falls bereits die Grafikelemente von einem anderen Menu existieren werden diese aus dem Fenster entfernt
 		if (menuPanel != null)
 		{
 			window.remove(menuPanel);
@@ -47,5 +47,13 @@ public class BildschirmFenster {
 		window.add(menuPanel, BorderLayout.CENTER);
 		//Das Fenster zeigt alle hinzugefügte Elemente an
 		window.setVisible(true);
+	}
+
+	/**
+	 * Gibt das Spielfenster zurück
+	 * @return
+	 */
+	public JFrame getWindow() {
+		return window;
 	}
 }
