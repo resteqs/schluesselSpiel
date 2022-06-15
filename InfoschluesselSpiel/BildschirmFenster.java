@@ -50,16 +50,19 @@ public class BildschirmFenster {
 	}
 
 	/**
+	 * Fügt Bilder zum Spielfenster hinzu
+	 * @param jPanel Panel zum hinzufügen
+	 */
+	public void addGraphic(JPanel jPanel) {
+		window.add(jPanel, BorderLayout.CENTER);
+		window.setVisible(true);
+	}
+
+	/**
 	 * Gibt das Spielfenster zurück
 	 * @return
 	 */
 	public JFrame getWindow() {
 		return window;
 	}
-
-	public JPanel getMenuPanel() {
-		return menuPanel;
-	}
-
-
 }

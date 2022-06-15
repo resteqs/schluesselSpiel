@@ -7,6 +7,8 @@ public class GameManager {
     private static GameManager singleton = new GameManager();
     //Referenz auf die Spielfigur des Spiels
     private Spieler spieler;
+    //Referenz auf den Hintergrund im Spiel
+    private Image hintergrund;
 
     private GameManager(){}
 
@@ -26,14 +28,18 @@ public class GameManager {
      * Startet das Spiel
      */
     public void spielStarten() {
+        //TEST: Erstellt ein Image fuer den Hintergrund um diesen anzuzeigen
+        hintergrund = new Image("bilder/Konzept_dark_background.jpg", 1920, 1080, 0, 0);
+
         //Erstellen eines Spielers
-        spieler = new Spieler(350, 700);//Vorläufige Position wegen aktueller Fenstergröße
+        spieler = new Spieler(960, 850);//Vorläufige Position wegen aktueller Fenstergröße
 
         //Timer der nach 20ms die Bewegung des Spielers aktualisiert
         timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 spieler.bewegen();
+                hintergrund.zeichne(0, 0);
             }
         });
 

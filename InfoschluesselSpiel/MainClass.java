@@ -8,8 +8,5 @@ public class MainClass {
 		//TEST: Startet das Spiel, dass die Steuerung des Spielers funktionsfähig wird
 		//	Auskommentieren oder wieder löschen, wenn beim Arbeiten stört
 		GameManager.getInstance().spielStarten();
-
-		//TEST: Erstellt ein Image fuer den Hintergrund um diesen anzuzeigen
-		new Image("bilder/Konzept_dark_background.jpg", 1920, 1080);
 	}
 }

@@ -10,6 +10,9 @@ public class Spieler {
     private int xKoordinate;
     private int yKoordinate;
 
+	//Bild der Figur
+    private Image figur;
+
     //Distanz die zurückgelegt wurde, sodass die Koordinaten nur beim "erneuern" des Spielfensters verändert werden
     private int distanz;
 
@@ -27,6 +30,8 @@ public class Spieler {
         yKoordinate = y;
 
         distanz = 0;
+
+        figur = new Image("bilder/spieler.png", 400, 180, xKoordinate, yKoordinate);
 
         keyListenerHinzufuegen();
     }
@@ -89,7 +94,7 @@ public class Spieler {
 
     /**
      * Setzt die Koordinaten entsprechend der zurückgelegten Distanz und aktualisiert die Grafik
-     * Wird beim aktualisieren des Spielfensters aufgerufen
+     * Wird beim Aktualisieren des Spielfensters aufgerufen
      */
     public void bewegen() {
         //Setzt die x-Koordinate entsprechend der Distanz
@@ -101,8 +106,8 @@ public class Spieler {
         Dimension windowGroesse   = window.getSize();
 
         //Setzt die Koordinaten des Spielers sollte er aus dem Fenster hinauslaufen zurück
-        if(xKoordinate > windowGroesse.getWidth()) {
-            xKoordinate = (int) windowGroesse.getWidth();
+        if(xKoordinate > windowGroesse.getWidth() - figur.getBreite()) {
+            xKoordinate = (int) windowGroesse.getWidth() - figur.getBreite();
         } else if(xKoordinate < 0){
             xKoordinate = 0;
         }
@@ -110,6 +115,7 @@ public class Spieler {
         //TEST: zur Sichtbarkeit, dass die Koordinaten des Spielers sich wirklich verändern
         System.out.println(xKoordinate);
 
-        //TODO: Bewegen der Grafik; jetzt jedoch noch nicht möglich, da Grafik noch nicht eingebunden
+		//Zeichnet die Grafik des Spielers neu
+        figur.zeichne(xKoordinate, yKoordinate);
     }
 }
