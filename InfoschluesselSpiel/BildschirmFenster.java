@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class BildschirmFenster {
-	//Singelton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
+	//Singleton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
 	private static BildschirmFenster singleton = new BildschirmFenster();
 	//Speichert eine Referenz zum geöffneten Fenster
 	private JFrame window;
@@ -28,7 +28,7 @@ public class BildschirmFenster {
 		//Legt fest, dass das Programm aufhört, wenn das Fenster geschlossen wird
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Legt die größe fest 
-		window.setSize(700,700); //To do: richtige Fenstergröße eingeben
+		window.setSize(1920,1080); //To do: richtige Fenstergröße eingeben
 		//Legt fest, dass die Fenstergröße nicht verändert werden kann
 		window.setResizable(false);
 		//Zeigt das Fenster an
@@ -56,4 +56,10 @@ public class BildschirmFenster {
 	public JFrame getWindow() {
 		return window;
 	}
+
+	public JPanel getMenuPanel() {
+		return menuPanel;
+	}
+
+
 }

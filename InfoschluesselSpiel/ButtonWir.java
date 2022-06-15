@@ -16,28 +16,28 @@ public class ButtonWir implements Observable {
 	private int hoehe;
 	private int breite;
 	
-//erzeugt eine Liste zum speichern von allen Observern	
+//erzeugt eine Liste zum Speichern von allen Observern
 	private List<Observer> observerListe = new ArrayList<Observer>();
 
 	public ButtonWir(JPanel panel, String Name, String Text, int xK, int yK, int ho, int br) {
 		
-// Es weren mehrere Mitgabe werte mitgegeben und den jeweiligen Varabelen zugeordnet:
-// 1. Das Panel auf welchem der Knopf erstellt werden soll
+// Es werden mehrere Mitgabe werte mitgegeben und den jeweiligen Variablen zugeordnet:
+// 1. Das Panel, auf welchem der Knopf erstellt werden soll
 		i = panel;
 		
-// 2. Der Name mit welchem der Button später vom Observer erkannt werden kann
+// 2. Der Name mit welchem der Button spï¿½ter vom Observer erkannt werden kann
 		name = Name;
 		
 // 3. Der Text der in dem Button stehen soll
 		text = Text;
 		
-// 4. Die xKordinate des Button
+// 4. Die xKoordinate des Buttons
 		xKordinate = xK;
 		
-// 5. Die yKordinate des Botton
+// 5. Die yKoordinate des Buttons
 		yKordinate = yK;
 		
-// 6. Die Höhe des Button
+// 6. Die Hoehe des Buttons
 		hoehe = ho;
 		
 // 7. Die Breite des Button
@@ -54,23 +54,23 @@ public class ButtonWir implements Observable {
 // Der Button wird dem Panel zugewiesen
 		i.add(b1);
 
-// Kordinaten und größe des Buttons werden gesetzt
+// Kordinaten und grï¿½ï¿½e des Buttons werden gesetzt
 		b1.setBounds(xKordinate, yKordinate, hoehe, breite);
 		
 // zeigt den Button an
 		b1.setVisible(true);
 
-// Das ist einne Funktion die sobald sie gedrückt wird dei Funktion benachrichigeObserver aufruft
+// Das ist einne Funktion die sobald sie gedrï¿½ckt wird dei Funktion benachrichigeObserver aufruft
 		b1.addActionListener(e -> benachrichtigeObserver());
 	}
 
-// eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, zu der Observerliste hinzufügt
+// eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, zu der Observerliste hinzufï¿½gt
 	public void regrestrireObserver(Observer beobachter) {
 		this.observerListe.add(beobachter);
 	}
 	
-// eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, von der Observerliste löscht
-	public void löscheObserver(Observer beobachter) {
+// eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, von der Observerliste lï¿½scht
+	public void loescheObserver(Observer beobachter) {
 		this.observerListe.add(beobachter);
 	}
 	
@@ -81,7 +81,7 @@ public class ButtonWir implements Observable {
 		}
 	}
 	
-// eine Funktion die den Namen zurückgiebt
+// eine Funktion die den Namen zurï¿½ckgiebt
 	public String getName() {
 		return name;
 	}

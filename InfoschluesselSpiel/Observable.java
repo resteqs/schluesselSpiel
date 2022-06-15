@@ -1,15 +1,14 @@
-
 public interface Observable {
 	
-// Jedes Observable muss in der Lage sein Observer zu einer Liste hinzuzufügen
+// Jedes Observable muss in der Lage sein Observer zu einer Liste hinzuzufuegen
 	public void regrestrireObserver(Observer beobachter);
 	
-// Jedes Observable muss in der Lage sein Observer von einer Liste zu löschen
-	public void löscheObserver(Observer beobachter);
+// Jedes Observable muss in der Lage sein Observer von einer Liste zu loeschen
+	public void loescheObserver(Observer beobachter);
 	
-// Jedes Observable muss in der Lage sein, bie veränderungen seine Observer zu benachrichtigen
+// Jedes Observable muss in der Lage sein, bie veraenderungen seine Observer zu benachrichtigen
 	public void benachrichtigeObserver();
 	
-// Gibt den namen des Observabele zurück
+// Gibt den namen des Observable zurï¿½ck
 	public String getName();
 }
