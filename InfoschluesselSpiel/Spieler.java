@@ -10,7 +10,7 @@ public class Spieler {
     private int xKoordinate;
     private int yKoordinate;
 
-	//Bild der Figur
+    //Bild der Figur
     private ImageWir figur;
 
     //Distanz die zurückgelegt wurde, sodass die Koordinaten nur beim "erneuern" des Spielfensters verändert werden
@@ -96,18 +96,13 @@ public class Spieler {
      * Setzt die Koordinaten entsprechend der zurückgelegten Distanz und aktualisiert die Grafik
      * Wird beim Aktualisieren des Spielfensters aufgerufen
      */
-    public void bewegen() {
+    public void bewegen(Graphics g) {
         //Setzt die x-Koordinate entsprechend der Distanz
         xKoordinate += distanz;
 
-        //Erfragt die Größe des Spielfensters, um dafür zu sorgen, dass der Spieler nicht aus dem Bildschirm läuft
-        BildschirmFenster fenster = BildschirmFenster.getInstance();
-        JFrame window             = fenster.getWindow();
-        Dimension windowGroesse   = window.getSize();
-
         //Setzt die Koordinaten des Spielers sollte er aus dem Fenster hinauslaufen zurück
-        if(xKoordinate > windowGroesse.getWidth() - figur.getBreite()) {
-            xKoordinate = (int) windowGroesse.getWidth() - figur.getBreite();
+        if(xKoordinate > Konstanten.SCREEN_WIDTH - figur.getBreite()) {
+            xKoordinate = (int) Konstanten.SCREEN_WIDTH - figur.getBreite();
         } else if(xKoordinate < 0){
             xKoordinate = 0;
         }
@@ -115,7 +110,7 @@ public class Spieler {
         //TEST: zur Sichtbarkeit, dass die Koordinaten des Spielers sich wirklich verändern
         //System.out.println(xKoordinate);
 
-		//Zeichnet die Grafik des Spielers neu
-        figur.zeichne(xKoordinate, yKoordinate);
+        //Zeichnet die Grafik des Spielers neu
+        figur.zeichne(xKoordinate, yKoordinate, g);
     }
 }

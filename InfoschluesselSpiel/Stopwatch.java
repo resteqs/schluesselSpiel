@@ -19,7 +19,7 @@ public class Stopwatch
     {
         timerStarten();
 
-        textAnzeige = new Text("" + Math.round(currentTime), 10, 50, 50, Color.white);
+        textAnzeige = new Text("" + Math.round(currentTime), 10, 70, 50, Color.white);
     }
 
 
@@ -33,7 +33,9 @@ public class Stopwatch
                 currentTime = ((System.nanoTime()) - startTime)/1000000000;     //Bisschen Quick math um von den beiden Zeiten die Zeit dazwischen auszurechnen,
                 //System.out.println(currentTime);                                //also die, die seit startTimer() vergangen ist   //serieller Output, für Debuggen
 
-                GameManager.getInstance().fensterAktualisieren();
+                //Aktualisieren der Grafiken
+                GameManager gameManager = GameManager.getInstance();
+                gameManager.fensterAktualisieren(BildschirmFenster.getInstance().getWindow().getGraphics());
             }
         });
 
@@ -59,8 +61,8 @@ public class Stopwatch
     /**
      * Aktualisiert die Zeit auf der Anzeige im Spielfenster
      */
-    public void anzeigeAktualisieren() {
-        textAnzeige.zeichne("" + Math.round(currentTime));
+    public void anzeigeAktualisieren(Graphics g) {
+        textAnzeige.zeichne("" + Math.round(currentTime), g);
     }
 
 

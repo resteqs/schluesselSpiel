@@ -1,4 +1,4 @@
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.JFrame;
 
@@ -23,7 +23,7 @@ public class Key{
 		public boolean getUse() {
 			return inUse;
 		}
-		public void bewegen() {
+		public void bewegen(Graphics g) {
 	        
 	       
 
@@ -42,7 +42,7 @@ public class Key{
 	        	yKoordinate += 10; //ansonsten wird er pro Frame um 10 Einheiten nach unten verschoben
 	        }
 			//Zeichnet die Grafik des Schlüssels neu
-	        graphik.zeichne(xKoordinate, yKoordinate);
+	        graphik.zeichne(xKoordinate, yKoordinate, g);
 	    }
 	}
 

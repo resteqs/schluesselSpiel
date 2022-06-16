@@ -27,26 +27,24 @@ public class Text extends JPanel {
 
         //Sorgt dafür, dass der Text angezeigt wird
         BildschirmFenster.getInstance().addGraphic(this);
-        repaint();
     }
 
     /**
      * Sorgt dafür, dass der Text im Spielfenster aktualisiert wird
      * @param newText neuer Text
      */
-    public void zeichne(String newText) {
+    public void zeichne(String newText, Graphics g) {
         //Legt den neuen Text fest
         inhalt = newText;
 
-        repaint();
+        draw(g);
     }
 
     /**
-     * Zeichnet den Text auf das Spielfenster
+     * Zeichnet den Text
      * @param g
      */
-    @Override
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         g.setFont(new Font(Font.MONOSPACED, Font.BOLD, schriftGroesse));
         g.setColor(schriftFarbe);
         g.drawString(inhalt, xKoordinate, yKoordinate);

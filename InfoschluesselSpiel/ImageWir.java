@@ -38,7 +38,6 @@ public class ImageWir extends JPanel{
 
         //Sorgt dafür, dass das Bild auf dem Spielfenster angezeigt wird
         BildschirmFenster.getInstance().addGraphic(this);
-        repaint();
     }
 
     /**
@@ -46,20 +45,19 @@ public class ImageWir extends JPanel{
      * @param newX neue x-Koordinate
      * @param newY neue y-Koordinate
      */
-    public void zeichne(int newX, int newY) {
+    public void zeichne(int newX, int newY, Graphics g) {
         //Legt die neuen Koordinaten fest
         xKoordinate = newX;
         yKoordinate = newY;
 
-        repaint();
+        draw(g);
     }
 
     /**
-     * Zeichnet das Bild aufs Spielfenster
+     * Zeichnet das Bild
      * @param g
      */
-    @Override
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         icon.paintIcon(null, g, xKoordinate, yKoordinate);
     }
 
@@ -70,7 +68,8 @@ public class ImageWir extends JPanel{
     public int getBreite() {
         return breite;
     }
+
     public int getHoehe() {
-    	return hoehe;
+        return hoehe;
     }
 }

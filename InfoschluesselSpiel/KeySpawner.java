@@ -1,4 +1,4 @@
-import java.awt.Dimension;
+import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom; // Für die randomZahl
 
 import javax.swing.JFrame;
@@ -32,11 +32,11 @@ public class KeySpawner {
         int randomNum = ThreadLocalRandom.current().nextInt(0, (int) windowGroesse.getWidth()-100);
         return randomNum;
 	}
-	public void keysBewegen() //siehe Klasse Key
+	public void keysBewegen(Graphics g) //siehe Klasse Key
 	{
 		spawn();
 		for(int j = 0; j <5; j++) {
-			keys[j].bewegen();
+			keys[j].bewegen(g);
 		}
 	}
 	public void spawnTimer() // reduziert den "Timer" um 1 pro Frame
