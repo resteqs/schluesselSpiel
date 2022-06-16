@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,22 +12,28 @@ public class Stopwatch
     public volatile double currentTime;             // Zeit, die seit start des Timers vergangen ist
     private Timer timer;                            //Timer initialisieren
 
+    private Text textAnzeige;                       //Anzeige für den Timer
 
-    public Stopwatch()                              //Konstruktor i guess, ist aber leer
+
+    public Stopwatch()                              //Konstruktor, startet Zeit und erstellt die Anzeige
     {
         timerStarten();
+
+        textAnzeige = new Text("" + Math.round(currentTime), 10, 50, 50, Color.white);
     }
 
 
     public void timerStarten()                         //Startet den Timer, wo jede 500 ms der Inhalt dieser Funktion "actionperformed" ausgeführt wird
     {
         startTime =  (System.nanoTime());               //Auf startTime wird die Zeit gespeichert, die Seit programmstart vergangen ist
-        timer = new Timer(500, new ActionListener()     //definiert den Zeitabstand
+        timer = new Timer(20, new ActionListener()     //definiert den Zeitabstand
         {
             public void actionPerformed(ActionEvent e)          //Methode für Timer
             {
                 currentTime = ((System.nanoTime()) - startTime)/1000000000;     //Bisschen Quick math um von den beiden Zeiten die Zeit dazwischen auszurechnen,
                 System.out.println(currentTime);                                //also die, die seit startTimer() vergangen ist   //serieller Output, für Debuggen
+
+                GameManager.getInstance().fensterAktualisieren();
             }
         });
 
@@ -49,6 +56,12 @@ public class Stopwatch
         System.out.println("Aus");                              //serieller Output, für Debuggen
     }
 
+    /**
+     * Aktualisiert die Zeit auf der Anzeige im Spielfenster
+     */
+    public void anzeigeAktualisieren() {
+        textAnzeige.zeichne("" + Math.round(currentTime));
+    }
 
 
 }

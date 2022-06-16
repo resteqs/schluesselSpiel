@@ -10,6 +10,8 @@ public class GameManager {
     private KeySpawner spawner;
     //Referenz auf den Hintergrund im Spiel
     private ImageWir hintergrund;
+    //Referenz auf die vergangene Spielzeit
+    private Stopwatch zeit;
 
     private GameManager(){}
 
@@ -21,33 +23,32 @@ public class GameManager {
         return singleton;
     }
 
-    //Ab hier für Testzwecke erstellt, aber zur Sichtbarkeit der Funktion der Steuerung erstmal notwendig
-    //Person, die für die Zeit zuständig ist, bitte noch überarbeiten
-    private Timer timer;
-
     /**
      * Startet das Spiel
      */
     public void spielStarten() {
-        //TEST: Erstellt ein Image fuer den Hintergrund um diesen anzuzeigen
+        //TEST: Erstellt ein Image für den Hintergrund um diesen anzuzeigen
         hintergrund = new ImageWir("bilder/Konzept_dark_background.jpg", 1920, 1080, 0, 0);
 
         //Erstellen eines Spielers
         spieler = new Spieler(960, 850);//Vorläufige Position wegen aktueller Fenstergröße
         spawner = new KeySpawner();
-        //Timer der nach 20ms die Bewegung des Spielers aktualisiert
-        timer = new Timer(20, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                spieler.bewegen();
-                spawner.spawnTimer();
-                spawner.keysBewegen();
-                hintergrund.zeichne(0, 0);
-            }
-        });
+      
 
-        //startet den timer
-        timer.start();
+        //Starten des Timers
+        zeit = new Stopwatch();
     }
-    //Ende Bereich für Testzwecke
+
+    /**
+     * Aktualisiert sämtliche Grafiken und Texte, die auf dem Spielfenster angezeigt werden
+     */
+    public void fensterAktualisieren() {
+        spieler.bewegen();
+        spawner.spawnTimer();
+        spawner.keysBewegen();
+        hintergrund.zeichne(0, 0);
+        zeit.anzeigeAktualisieren();
+    }
+
+
 }
