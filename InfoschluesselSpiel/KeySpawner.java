@@ -43,4 +43,8 @@ public class KeySpawner {
 	{
 		spawnTimerValue --;
 	}
+
+	public Key[] getKeys() {
+		return keys;
+	}
 }

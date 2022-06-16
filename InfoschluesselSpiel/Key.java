@@ -44,5 +44,17 @@ public class Key{
 			//Zeichnet die Grafik des Schlüssels neu
 	        graphik.zeichne(xKoordinate, yKoordinate, g);
 	    }
+
+	public int getxKoordinate() {
+		return xKoordinate;
 	}
+
+	public int getyKoordinate() {
+		return yKoordinate;
+	}
+
+	public ImageWir getGraphik() {
+		return graphik;
+	}
+}
 

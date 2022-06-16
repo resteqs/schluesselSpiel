@@ -113,4 +113,16 @@ public class Spieler {
         //Zeichnet die Grafik des Spielers neu
         figur.zeichne(xKoordinate, yKoordinate, g);
     }
+
+    public int getxKoordinate() {
+        return xKoordinate;
+    }
+
+    public int getyKoordinate() {
+        return yKoordinate;
+    }
+
+    public ImageWir getFigur() {
+        return figur;
+    }
 }

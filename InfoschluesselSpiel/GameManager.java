@@ -14,6 +14,8 @@ public class GameManager {
     //Referenz auf die vergangene Spielzeit
     private Stopwatch zeit;
 
+    private GameOverDetector checker;
+
     //DoubleBuffer Attribute
     private Image doubleBufferImage;
     private Graphics doubleBufferGraphics;
@@ -42,6 +44,9 @@ public class GameManager {
 
         //Starten des Timers
         zeit = new Stopwatch();
+
+        checker = new GameOverDetector();
+
     }
 
     /**
@@ -67,6 +72,9 @@ public class GameManager {
 
         //Zählt die Zeit des Spawners herunter
         spawner.spawnTimer();
+
+        checker.check(spawner.getKeys(), spieler);
+
     }
 
     /**
@@ -78,5 +86,13 @@ public class GameManager {
         spieler.bewegen(g);
         spawner.keysBewegen(g);
         zeit.anzeigeAktualisieren(g);
+    }
+
+    public KeySpawner getSpawner() {
+        return spawner;
+    }
+
+    public Spieler getSpieler() {
+        return spieler;
     }
 }
