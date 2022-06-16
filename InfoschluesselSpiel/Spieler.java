@@ -113,7 +113,7 @@ public class Spieler {
         }
 
         //TEST: zur Sichtbarkeit, dass die Koordinaten des Spielers sich wirklich verändern
-        System.out.println(xKoordinate);
+        //System.out.println(xKoordinate);
 
 		//Zeichnet die Grafik des Spielers neu
         figur.zeichne(xKoordinate, yKoordinate);

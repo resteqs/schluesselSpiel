@@ -7,6 +7,7 @@ public class GameManager {
     private static GameManager singleton = new GameManager();
     //Referenz auf die Spielfigur des Spiels
     private Spieler spieler;
+    private KeySpawner spawner;
     //Referenz auf den Hintergrund im Spiel
     private ImageWir hintergrund;
 
@@ -33,12 +34,14 @@ public class GameManager {
 
         //Erstellen eines Spielers
         spieler = new Spieler(960, 850);//Vorläufige Position wegen aktueller Fenstergröße
-
+        spawner = new KeySpawner();
         //Timer der nach 20ms die Bewegung des Spielers aktualisiert
         timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 spieler.bewegen();
+                spawner.spawnTimer();
+                spawner.keysBewegen();
                 hintergrund.zeichne(0, 0);
             }
         });

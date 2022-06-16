@@ -70,4 +70,7 @@ public class ImageWir extends JPanel{
     public int getBreite() {
         return breite;
     }
+    public int getHoehe() {
+    	return hoehe;
+    }
 }
