@@ -14,7 +14,7 @@ public class Key{
 			graphik = new ImageWir("bilder/spieler.png", 100, 100, xKoordinate, yKoordinate);
 			inUse = false;
 			
-		}
+		}// inaktives Schlüssel wird aktiviert und auf die Zufälligen x Koordinaten gebracht
 		public void koordinatenSetzen(int x, int y) {
 			xKoordinate = x;
 			yKoordinate = y;
@@ -24,27 +24,24 @@ public class Key{
 			return inUse;
 		}
 		public void bewegen() {
-	        //Setzt die x-Koordinate entsprechend der Distanz
+	        
 	       
 
-	        //Erfragt die Größe des Spielfensters, um dafür zu sorgen, dass der Spieler nicht aus dem Bildschirm läuft
+	        //Erfragt die Größe des Spielfensters
 	        BildschirmFenster fenster = BildschirmFenster.getInstance();
 	        JFrame window             = fenster.getWindow();
 	        Dimension windowGroesse   = window.getSize();
 
-	        //Setzt die Koordinaten des Spielers sollte er aus dem Fenster hinauslaufen zurück
+	        //Wir wollen nur aktive Schlüsseln nach unten fallen lassen
+	        // Wenn der Schlüssel den Boden berührt wird er nach y=1500 "teleportiert"
+	        // und wartet bis KeySpawner den wieder einsetzt
 	        if(inUse == true) {
 	        	if(yKoordinate > windowGroesse.getHeight() - graphik.getHoehe()) {
 		            yKoordinate = 1500; inUse = false;
 		        } 
-	        	yKoordinate += 10;
+	        	yKoordinate += 10; //ansonsten wird er pro Frame um 10 Einheiten nach unten verschoben
 	        }
-	         
-
-
-	        
-
-			//Zeichnet die Grafik des Spielers neu
+			//Zeichnet die Grafik des Schlüssels neu
 	        graphik.zeichne(xKoordinate, yKoordinate);
 	    }
 	}
