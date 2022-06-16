@@ -36,26 +36,26 @@ public class ImageWir extends JPanel{
         //Erstellen des Labels mit Bild
         jLabel = new JLabel(icon);
 
-        BildschirmFenster.getInstance().addGraphic(this);
-
         //Sorgt dafür, dass das Bild auf dem Spielfenster angezeigt wird
+        BildschirmFenster.getInstance().addGraphic(this);
         repaint();
     }
 
     /**
      * Sorgt dafür, dass das Bild an der neuen Position gezeichnet wird
      * @param newX neue x-Koordinate
-     * @param newy neue y-Koordinate
+     * @param newY neue y-Koordinate
      */
-    public void zeichne(int newX, int newy) {
+    public void zeichne(int newX, int newY) {
+        //Legt die neuen Koordinaten fest
         xKoordinate = newX;
-        yKoordinate = newy;
+        yKoordinate = newY;
 
         repaint();
     }
 
     /**
-     * Zeichnet das Bild aufs Spielfenster kla
+     * Zeichnet das Bild aufs Spielfenster
      * @param g
      */
     @Override
