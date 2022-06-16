@@ -28,10 +28,10 @@ public class GameManager {
      */
     public void spielStarten() {
         //TEST: Erstellt ein Image für den Hintergrund um diesen anzuzeigen
-        hintergrund = new ImageWir("bilder/Konzept_dark_background.jpg", 1920, 1080, 0, 0);
+        hintergrund = new ImageWir("bilder/Konzept_dark_background.jpg", 1280, 720, 0, 0);
 
         //Erstellen eines Spielers
-        spieler = new Spieler(960, 850);//Vorläufige Position wegen aktueller Fenstergröße
+        spieler = new Spieler(440, 470);//Vorläufige Position wegen aktueller Fenstergröße
         spawner = new KeySpawner();
       
 

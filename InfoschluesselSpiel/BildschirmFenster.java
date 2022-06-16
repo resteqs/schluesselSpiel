@@ -28,7 +28,7 @@ public class BildschirmFenster {
 		//Legt fest, dass das Programm aufhört, wenn das Fenster geschlossen wird
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Legt die größe fest 
-		window.setSize(1920,1080); //To do: richtige Fenstergröße eingeben
+		window.setSize(1280,720); //To do: richtige Fenstergröße eingeben
 		//Legt fest, dass die Fenstergröße nicht verändert werden kann
 		window.setResizable(false);
 		//Zeigt das Fenster an
