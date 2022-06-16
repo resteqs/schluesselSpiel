@@ -8,7 +8,7 @@ public class GameManager {
     //Referenz auf die Spielfigur des Spiels
     private Spieler spieler;
     //Referenz auf den Hintergrund im Spiel
-    private Image hintergrund;
+    private ImageWir hintergrund;
 
     private GameManager(){}
 
@@ -29,7 +29,7 @@ public class GameManager {
      */
     public void spielStarten() {
         //TEST: Erstellt ein Image fuer den Hintergrund um diesen anzuzeigen
-        hintergrund = new Image("bilder/Konzept_dark_background.jpg", 1920, 1080, 0, 0);
+        hintergrund = new ImageWir("bilder/Konzept_dark_background.jpg", 1920, 1080, 0, 0);
 
         //Erstellen eines Spielers
         spieler = new Spieler(960, 850);//Vorläufige Position wegen aktueller Fenstergröße

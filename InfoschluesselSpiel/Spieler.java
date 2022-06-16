@@ -11,7 +11,7 @@ public class Spieler {
     private int yKoordinate;
 
 	//Bild der Figur
-    private Image figur;
+    private ImageWir figur;
 
     //Distanz die zurückgelegt wurde, sodass die Koordinaten nur beim "erneuern" des Spielfensters verändert werden
     private int distanz;
@@ -31,7 +31,7 @@ public class Spieler {
 
         distanz = 0;
 
-        figur = new Image("bilder/spieler.png", 400, 180, xKoordinate, yKoordinate);
+        figur = new ImageWir("bilder/spieler.png", 400, 180, xKoordinate, yKoordinate);
 
         keyListenerHinzufuegen();
     }

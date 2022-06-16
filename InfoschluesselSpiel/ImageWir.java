@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
-public class Image extends JPanel{
+public class ImageWir extends JPanel{
     //Pfad der Bilddatei
     private String pfad;
     //Position des Bildes
@@ -15,7 +15,7 @@ public class Image extends JPanel{
     private JLabel jLabel;
     private ImageIcon icon;
 
-    public Image(String pfad, int breite, int hoehe, int x, int y) {
+    public ImageWir(String pfad, int breite, int hoehe, int x, int y) {
         //setzen des Dateipfades
         this.pfad = pfad;
 
@@ -55,7 +55,7 @@ public class Image extends JPanel{
     }
 
     /**
-     * Zeichnet das Bild aufs Spielfenster
+     * Zeichnet das Bild aufs Spielfenster kla
      * @param g
      */
     @Override
