@@ -31,7 +31,7 @@ public class Stopwatch
             public void actionPerformed(ActionEvent e)          //Methode für Timer
             {
                 currentTime = ((System.nanoTime()) - startTime)/1000000000;     //Bisschen Quick math um von den beiden Zeiten die Zeit dazwischen auszurechnen,
-                System.out.println(currentTime);                                //also die, die seit startTimer() vergangen ist   //serieller Output, für Debuggen
+                //System.out.println(currentTime);                                //also die, die seit startTimer() vergangen ist   //serieller Output, für Debuggen
 
                 GameManager.getInstance().fensterAktualisieren();
             }

@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 public class KeySpawner {
 	private Key keys[];
-	private int spawnTimerValue;
+	private int spawnTimerValue = -1;
 	private int spawnIteration;
 	public KeySpawner() {
 		keys = new Key[3];
@@ -14,11 +14,12 @@ public class KeySpawner {
 		}
 	}
 	public void spawn() {
+		
 		if(spawnTimerValue < 0) {
 			spawnIteration ++;
 			if(keys[spawnIteration % 3].getUse() == false) {
 				keys[spawnIteration % 3].koordinatenSetzen(zufallZahl(), 100);
-				spawnTimerValue = 50;
+				spawnTimerValue = 30;
 			}
 		}
 	}

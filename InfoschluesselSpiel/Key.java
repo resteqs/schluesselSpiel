@@ -12,7 +12,8 @@ public class Key{
 			xKoordinate = x;
 			yKoordinate = y;
 			graphik = new ImageWir("bilder/spieler.png", 100, 100, xKoordinate, yKoordinate);
-			System.out.println("erstellt");
+			inUse = false;
+			
 		}
 		public void koordinatenSetzen(int x, int y) {
 			xKoordinate = x;
@@ -40,8 +41,8 @@ public class Key{
 	        }
 	         
 
-	        //TEST: zur Sichtbarkeit, dass die Koordinaten des Spielers sich wirklich verändern
-	        System.out.println(yKoordinate);
+
+	        
 
 			//Zeichnet die Grafik des Spielers neu
 	        graphik.zeichne(xKoordinate, yKoordinate);
