@@ -31,7 +31,7 @@ public class Spieler {
 
         distanz = 0;
 
-        figur = new ImageWir("bilder/spieler.png", 400, 180, xKoordinate, yKoordinate);
+        figur = new ImageWir("bilder/spieler.png", 75, 150, xKoordinate, yKoordinate);
 
         keyListenerHinzufuegen();
     }

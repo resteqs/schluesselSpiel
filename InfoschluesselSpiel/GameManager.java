@@ -38,7 +38,7 @@ public class GameManager {
         hintergrund = new ImageWir("bilder/Konzept_dark_background.jpg", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
 
         //Erstellen eines Spielers
-        spieler = new Spieler(440, 470);//Vorläufige Position wegen aktueller Fenstergröße
+        spieler = new Spieler(440, 510);//Vorläufige Position wegen aktueller Fenstergröße
 
         spawner = new KeySpawner();
 
