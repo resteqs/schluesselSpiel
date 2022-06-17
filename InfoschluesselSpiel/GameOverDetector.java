@@ -21,7 +21,7 @@ public class GameOverDetector {
                 {
                     //starte game over screeen (Funktioniert noch nicht das spiel muss dann noch angehalten werden)
                 	
-                	//GameOverMenu.getInstance().menuAnzeigen();
+                	GameOverMenu.getInstance().menuAnzeigen();
                 	
                 	
                     //System.out.println("GAME OVER");
