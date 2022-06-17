@@ -19,7 +19,11 @@ public class GameOverDetector {
                 //System.out.println("Jetzt");
                 if(keys[j].getxKoordinate()  <= spieler.getxKoordinate() + spieler.getFigur().getBreite() && spieler.getxKoordinate() <= keys[j].getxKoordinate() + keys[j].getGraphik().getBreite())
                 {
-                    //starte game over screeen
+                    //starte game over screeen (Funktioniert noch nicht das spiel muss dann noch angehalten werden)
+                	
+                	//GameOverMenu.getInstance().menuAnzeigen();
+                	
+                	
                     //System.out.println("GAME OVER");
                 }
             }
