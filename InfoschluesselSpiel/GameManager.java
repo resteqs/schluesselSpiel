@@ -46,7 +46,6 @@ public class GameManager {
         zeit = new Stopwatch();
 
         checker = new GameOverDetector();
-
     }
 
     /**
@@ -73,8 +72,7 @@ public class GameManager {
         //Zählt die Zeit des Spawners herunter
         spawner.spawnTimer();
 
-        checker.check(spawner.getKeys(), spieler);
-
+        checker.check(spawner.getKeys(), spieler, zeit);
     }
 
     /**
@@ -86,13 +84,5 @@ public class GameManager {
         spieler.bewegen(g);
         spawner.keysBewegen(g);
         zeit.anzeigeAktualisieren(g);
-    }
-
-    public KeySpawner getSpawner() {
-        return spawner;
-    }
-
-    public Spieler getSpieler() {
-        return spieler;
     }
 }

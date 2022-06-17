@@ -9,7 +9,7 @@ public class GameOverDetector {
 
 
 
-    public void check(Key [] keys, Spieler spieler) {
+    public void check(Key [] keys, Spieler spieler, Stopwatch zeit) {
 
 
 
@@ -22,7 +22,8 @@ public class GameOverDetector {
                     //starte game over screeen (Funktioniert noch nicht das spiel muss dann noch angehalten werden)
                 	
                 	GameOverMenu.getInstance().menuAnzeigen();
-                	
+
+                    zeit.timerStoppen();
                 	
                     //System.out.println("GAME OVER");
                 }

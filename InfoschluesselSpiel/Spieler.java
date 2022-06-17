@@ -10,8 +10,14 @@ public class Spieler {
     private int xKoordinate;
     private int yKoordinate;
 
-    //Bild der Figur
+    //Model der Figur für Größe
     private ImageWir figur;
+    //Bilder für die Animation
+    private ImageWir[] animation;
+    private ImageWir[] animationRechts;
+    //Hilfen für die richtige Grafik der Animation im nächsten Frame
+    private int naechsteFigur;
+    private boolean nachLinks;
 
     //Distanz die zurückgelegt wurde, sodass die Koordinaten nur beim "erneuern" des Spielfensters verändert werden
     private int distanz;
@@ -31,7 +37,20 @@ public class Spieler {
 
         distanz = 0;
 
-        figur = new ImageWir("bilder/spieler.png", 75, 150, xKoordinate, yKoordinate);
+        //Lädt das Figur Model
+        figur = new ImageWir("bilder/figur1/gehend_blau1.png", 95, 150, xKoordinate, yKoordinate);
+
+        //Laden der Grafiken für die Animation
+        animation       = new ImageWir[17];
+        animationRechts = new ImageWir[17];
+
+        for(int i = 0; i < animation.length; i++) {
+            animation[i]       = new ImageWir("bilder/figur1/gehend_blau" + (i + 1) + ".png", 95, 150, xKoordinate, yKoordinate);
+            animationRechts[i] = new ImageWir("bilder/figur1/gehend_blau_rechts" + (i + 1) + ".png", 95, 150, xKoordinate, yKoordinate);
+        }
+
+        naechsteFigur = 0;
+        nachLinks     = true;
 
         keyListenerHinzufuegen();
     }
@@ -75,14 +94,16 @@ public class Spieler {
      * Ändert die Distanz, dass der Spieler nach links bewegt wird
      */
     private void nachLinks() {
-        distanz = -geschwindigkeit;
+        distanz   = -geschwindigkeit;
+        nachLinks = true;
     }
 
     /**
      * Ändert die Distanz, dass der Spieler nach rechts bewegt wird
      */
     private void nachRechts() {
-        distanz = geschwindigkeit;
+        distanz   = geschwindigkeit;
+        nachLinks = false;
     }
 
     /**
@@ -111,17 +132,46 @@ public class Spieler {
         //System.out.println(xKoordinate);
 
         //Zeichnet die Grafik des Spielers neu
-        figur.zeichne(xKoordinate, yKoordinate, g);
+        //überprüft die Richtung in die die Grafik "schauen" soll und zeichnet diese
+        if(nachLinks) {
+            animation[naechsteFigur].zeichne(xKoordinate, yKoordinate, g);
+        } else {
+            animationRechts[naechsteFigur].zeichne(xKoordinate, yKoordinate, g);
+        }
+
+        //Lädt das nächste Bild der Animation je nach Bewegungszustand
+        if(distanz == 0) {
+            naechsteFigur = 0;
+        } else {
+            naechsteFigur++;
+        }
+
+        //Wählt wieder die Startfigur, wenn die Animation einmal durchlaufen wurde
+        if(naechsteFigur >= animation.length) {
+            naechsteFigur = 0;
+        }
     }
 
+    /**
+     * Gibt die xKoordinate des Spielers zurück
+     * @return
+     */
     public int getxKoordinate() {
         return xKoordinate;
     }
 
+    /**
+     * Gibt die yKoordinate des Spielers zurück
+     * @return
+     */
     public int getyKoordinate() {
         return yKoordinate;
     }
 
+    /**
+     * Gibt die Figur des Spielers zurück
+     * @return
+     */
     public ImageWir getFigur() {
         return figur;
     }
