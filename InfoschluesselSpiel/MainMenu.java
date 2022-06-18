@@ -1,17 +1,17 @@
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MainMenu extends MenuWir{
+public class MainMenu extends MenuWir {
 // Singleton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
     private static MainMenu singleton = new MainMenu();
-// Speichert das panel das in diesem Menu bearbeitet wird
+// Speichert das panel, das in diesem Menu bearbeitet wird
     private JPanel panel;
 	
 	private MainMenu() {
 		super(); 
 	}
 
-// Gibt das singleton zurück damit andere Klassen methoden aufrufen können
+// Gibt das singleton zurï¿½ck damit andere Klassen methoden aufrufen kï¿½nnen
     public static MainMenu getInstance() {
         return singleton;
     }
@@ -21,15 +21,15 @@ public class MainMenu extends MenuWir{
 // erstellt das Pannel
 		panel = new JPanel();
 		panel.setLayout(null);
-// verändert das Hintergrundbild
+// verï¿½ndert das Hintergrundbild
 		this.hintergrundEinstellen();
-// fügt die Buttons hinzu
+// fï¿½gt die Buttons hinzu
 		this.buttonsErstellen();
-//ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen lässt
+//ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen lï¿½sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 	}
 
-// Methode die das Hintergrundbild verändert
+// Methode die das Hintergrundbild verï¿½ndert
 	protected void hintergrundEinstellen() {
 		// TODO Auto-generated method stub
 		
@@ -47,16 +47,17 @@ public class MainMenu extends MenuWir{
 		buttonHighScoreMenu.regrestrireObserver(this);
 	}	
 	
-// Methode wird aufgerufen, wenn einer der Buttons seinen Zustand ändert
+// Methode wird aufgerufen, wenn einer der Buttons seinen Zustand ï¿½ndert
 	public void aktualiesiere(Observable veraendert) {
-// Überprüft welcher Button gedrückt wurde:
-		
+// ï¿½berprï¿½ft welcher Button gedrï¿½ckt wurde:
 		if (veraendert.getName() == "ButtonSpielStarten") {
+//Sorgt dafÃ¼r, dass das MenÃ¼ beim Spielstart verschwindet
+			BildschirmFenster.getInstance().removeMenu();
 // Startet das Spiel
 			GameManager.getInstance().spielStarten();
 		}
 		if (veraendert.getName() == "ButtonHighScoreMenu") {
-// Öffnet das Highscore Menü
+// ï¿½ffnet das Highscore Menï¿½
 			HighScoreMenu.getInstance().menuAnzeigen();
 		}
 	}

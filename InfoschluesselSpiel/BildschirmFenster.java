@@ -33,7 +33,7 @@ public class BildschirmFenster {
 		window.setResizable(false);
 		//Zeigt das Fenster an
 		window.setVisible(true);
-		//Fügt den KeyListener hinzu, dass das Fenster auf Tastatureingaben reagiert
+		//Fügr den KeyListener hinzu, dass das Fenster auf Tastatureingaben reagiert
 		window.addKeyListener(Tastaturinput.getInstance());
 	}
 	public void addToMenu(JPanel jPanel)
@@ -49,6 +49,15 @@ public class BildschirmFenster {
 		window.add(menuPanel, BorderLayout.CENTER);
 		//Das Fenster zeigt alle hinzugefügte Elemente an
 		window.setVisible(true);
+	}
+
+	/**
+	 * Löscht das aktuelle Menü aus dem Fenster
+	 */
+	public void removeMenu() {
+		if(menuPanel != null) {
+			window.remove(menuPanel);
+		}
 	}
 
 	/**
