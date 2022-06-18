@@ -61,8 +61,8 @@ public class Stopwatch
     /**
      * Aktualisiert die Zeit auf der Anzeige im Spielfenster
      */
-    public void anzeigeAktualisieren(Graphics g) {
-        textAnzeige.zeichne("" + Math.round(currentTime), g);
+    public void anzeigeAktualisieren(Graphics graphics) {
+        textAnzeige.zeichne("" + Math.round(currentTime), graphics);
     }
 
 

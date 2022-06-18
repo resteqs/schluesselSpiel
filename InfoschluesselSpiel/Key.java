@@ -23,7 +23,7 @@ public class Key{
 		public boolean getUse() {
 			return inUse;
 		}
-		public void bewegen(Graphics g) {
+		public void bewegen(Graphics graphics) {
 	        
 	       
 
@@ -42,7 +42,7 @@ public class Key{
 	        	yKoordinate += 10; //ansonsten wird er pro Frame um 10 Einheiten nach unten verschoben
 	        }
 			//Zeichnet die Grafik des Schlüssels neu
-	        graphik.zeichne(xKoordinate, yKoordinate, g);
+	        graphik.zeichne(xKoordinate, yKoordinate, graphics);
 	    }
 
 	public int getxKoordinate() {
@@ -56,5 +56,8 @@ public class Key{
 	public ImageWir getGraphik() {
 		return graphik;
 	}
+
 }
+
+
 

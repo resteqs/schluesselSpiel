@@ -60,6 +60,9 @@ public class ButtonWir implements Observable {
 // zeigt den Button an
 		b1.setVisible(true);
 
+//gibt dem Button keinen Focus, sodass das Fenster weiterhin auf den Tastaturinput reagiert
+		b1.setFocusable(false);
+
 // Das ist einne Funktion die sobald sie gedr�ckt wird dei Funktion benachrichigeObserver aufruft
 		b1.addActionListener(e -> benachrichtigeObserver());
 	}
@@ -71,7 +74,7 @@ public class ButtonWir implements Observable {
 	
 // eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, von der Observerliste l�scht
 	public void loescheObserver(Observer beobachter) {
-		this.observerListe.add(beobachter);
+		this.observerListe.remove(beobachter);
 	}
 	
 // eine Funktion die bei allen Observern die in der observerListe gespeichert sind die funktion aktulisiere aufruft

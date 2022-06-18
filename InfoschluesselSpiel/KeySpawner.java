@@ -32,11 +32,11 @@ public class KeySpawner {
         int randomNum = ThreadLocalRandom.current().nextInt(0, (int) windowGroesse.getWidth()-100);
         return randomNum;
 	}
-	public void keysBewegen(Graphics g) //siehe Klasse Key
+	public void keysBewegen(Graphics graphics) //siehe Klasse Key
 	{
 		spawn();
 		for(int j = 0; j <5; j++) {
-			keys[j].bewegen(g);
+			keys[j].bewegen(graphics);
 		}
 	}
 	public void spawnTimer() // reduziert den "Timer" um 1 pro Frame

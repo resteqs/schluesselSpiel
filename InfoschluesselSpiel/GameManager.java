@@ -50,8 +50,9 @@ public class GameManager {
 
     /**
      * Aktualisiert sämtliche Grafiken und Texte, die auf dem Spielfenster angezeigt werden
+     * @param graphics
      */
-    public void fensterAktualisieren(Graphics g) {
+    public void fensterAktualisieren(Graphics graphics) {
         //Erstellt ein Bild des aktuellen Fensters
         if(doubleBufferImage == null) {
             //Erfragt die Fensterdaten
@@ -67,7 +68,7 @@ public class GameManager {
         renderGrafiken(doubleBufferGraphics);
 
         //Zeichnet die neue Grafik
-        g.drawImage(doubleBufferImage, 0, 0, Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, null);
+        graphics.drawImage(doubleBufferImage, 0, 0, Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, null);
 
         //Zählt die Zeit des Spawners herunter
         spawner.spawnTimer();
@@ -77,12 +78,12 @@ public class GameManager {
 
     /**
      * Rendert die Grafiken für den nächsten Frame
-     * @param g
+     * @param graphics
      */
-    public void renderGrafiken(Graphics g) {
-        hintergrund.zeichne(0, 0, g);
-        spieler.bewegen(g);
-        spawner.keysBewegen(g);
-        zeit.anzeigeAktualisieren(g);
+    public void renderGrafiken(Graphics graphics) {
+        hintergrund.zeichne(0, 0, graphics);
+        spieler.bewegen(graphics);
+        spawner.keysBewegen(graphics);
+        zeit.anzeigeAktualisieren(graphics);
     }
 }

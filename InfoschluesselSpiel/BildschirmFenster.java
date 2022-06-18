@@ -33,6 +33,8 @@ public class BildschirmFenster {
 		window.setResizable(false);
 		//Zeigt das Fenster an
 		window.setVisible(true);
+		//Fügt den KeyListener hinzu, dass das Fenster auf Tastatureingaben reagiert
+		window.addKeyListener(Tastaturinput.getInstance());
 	}
 	public void addToMenu(JPanel jPanel)
 	{
@@ -46,15 +48,6 @@ public class BildschirmFenster {
 		//Die neuen Grafikelemente werden dem Fenster hinzugefügt
 		window.add(menuPanel, BorderLayout.CENTER);
 		//Das Fenster zeigt alle hinzugefügte Elemente an
-		window.setVisible(true);
-	}
-
-	/**
-	 * Fügt Bilder zum Spielfenster hinzu
-	 * @param jPanel Panel zum hinzufügen
-	 */
-	public void addGraphic(JPanel jPanel) {
-		window.add(jPanel, BorderLayout.CENTER);
 		window.setVisible(true);
 	}
 

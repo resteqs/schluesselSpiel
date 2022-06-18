@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
-public class ImageWir extends JPanel{
+public class ImageWir{
     //Pfad der Bilddatei
     private String pfad;
     //Position des Bildes
@@ -37,28 +37,31 @@ public class ImageWir extends JPanel{
         jLabel = new JLabel(icon);
 
         //Sorgt dafür, dass das Bild auf dem Spielfenster angezeigt wird
-        BildschirmFenster.getInstance().addGraphic(this);
+        BildschirmFenster fenster = BildschirmFenster.getInstance();
+        Window window             = fenster.getWindow();
+        window.add(jLabel);
     }
 
     /**
      * Sorgt dafür, dass das Bild an der neuen Position gezeichnet wird
      * @param newX neue x-Koordinate
      * @param newY neue y-Koordinate
+     * @param graphics
      */
-    public void zeichne(int newX, int newY, Graphics g) {
+    public void zeichne(int newX, int newY, Graphics graphics) {
         //Legt die neuen Koordinaten fest
         xKoordinate = newX;
         yKoordinate = newY;
 
-        draw(g);
+        draw(graphics);
     }
 
     /**
      * Zeichnet das Bild
-     * @param g
+     * @param graphics
      */
-    public void draw(Graphics g) {
-        icon.paintIcon(null, g, xKoordinate, yKoordinate);
+    public void draw(Graphics graphics) {
+        icon.paintIcon(null, graphics, xKoordinate, yKoordinate);
     }
 
     /**
@@ -71,5 +74,9 @@ public class ImageWir extends JPanel{
 
     public int getHoehe() {
         return hoehe;
+    }
+
+    public JLabel getjLabel() {
+        return jLabel;
     }
 }

@@ -1,9 +1,4 @@
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-import static java.awt.event.KeyEvent.*;
 
 public class Spieler {
     //Koordinaten des Spielers
@@ -12,12 +7,16 @@ public class Spieler {
 
     //Model der Figur für Größe
     private ImageWir figur;
-    //Bilder für die Animation
+    //Bilder für die Animation 1
     private ImageWir[] animation;
     private ImageWir[] animationRechts;
+    //Bilder für die Animation 2
+    private ImageWir[] animation2;
+    private ImageWir[] animationRechts2;
     //Hilfen für die richtige Grafik der Animation im nächsten Frame
     private int naechsteFigur;
     private boolean nachLinks;
+    private int charakter;
 
     //Distanz die zurückgelegt wurde, sodass die Koordinaten nur beim "erneuern" des Spielfensters verändert werden
     private int distanz;
@@ -37,10 +36,7 @@ public class Spieler {
 
         distanz = 0;
 
-        //Lädt das Figur Model
-        figur = new ImageWir("bilder/figur1/gehend_blau1.png", 95, 150, xKoordinate, yKoordinate);
-
-        //Laden der Grafiken für die Animation
+        //Laden der Grafiken für die Animation 1
         animation       = new ImageWir[17];
         animationRechts = new ImageWir[17];
 
@@ -49,45 +45,21 @@ public class Spieler {
             animationRechts[i] = new ImageWir("bilder/figur1/gehend_blau_rechts" + (i + 1) + ".png", 95, 150, xKoordinate, yKoordinate);
         }
 
+        //Laden der Grafiken für die Animation 2
+        animation2       = new ImageWir[7];
+        animationRechts2 = new ImageWir[7];
+
+        for(int i = 0; i < animation2.length; i++) {
+            animation2[i]       = new ImageWir("bilder/figur2/pixil-frame-" + i + ".png", 150, 150, xKoordinate, yKoordinate);
+            animationRechts2[i] = new ImageWir("bilder/figur2/ProtagonistAnimationRight" + i + ".png", 150, 150, xKoordinate, yKoordinate);
+        }
+
+        //Setzen der Attribute für eine flüssige Animation
         naechsteFigur = 0;
         nachLinks     = true;
 
-        keyListenerHinzufuegen();
-    }
-
-    /**
-     * Fügt den KeyListener zum Spielfenster hinzu, dass der Spieler auf Tastatureingaben reagiert
-     */
-    private void keyListenerHinzufuegen() {
-        BildschirmFenster fenster = BildschirmFenster.getInstance();
-        JFrame window             = fenster.getWindow();
-
-        window.addKeyListener(new KeyAdapter() {
-            //Reagiert so lange die Pfeiltasten nach links/rechts gedrückt werden
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()) {
-                    case VK_LEFT:
-                        nachLinks();
-                        break;
-
-                    case VK_RIGHT:
-                        nachRechts();
-                        break;
-                }
-            }
-
-            //Reagiert, wenn die Pfeiltasten losgelassen werden
-            @Override
-            public void keyReleased(KeyEvent e) {
-                switch(e.getKeyCode()) {
-                    case VK_LEFT:
-                    case VK_RIGHT:
-                        anhalten();
-                        break;
-                }
-            }
-        });
+        //Setzt den Charakter und lädt das zugehörige Model, sodass die GameOverAbfrage auf den Charakter angepasst ist
+        setCharakter(1);
     }
 
     /**
@@ -117,7 +89,22 @@ public class Spieler {
      * Setzt die Koordinaten entsprechend der zurückgelegten Distanz und aktualisiert die Grafik
      * Wird beim Aktualisieren des Spielfensters aufgerufen
      */
-    public void bewegen(Graphics g) {
+    public void bewegen(Graphics graphics) {
+        //Holt den Tastaturinput und setzt die entsprechende Distanz
+        switch (Tastaturinput.getInstance().getSpieler()) {
+            case "links":
+                nachLinks();
+                break;
+
+            case "rechts":
+                nachRechts();
+                break;
+
+            case "anhalten":
+                anhalten();
+                break;
+        }
+
         //Setzt die x-Koordinate entsprechend der Distanz
         xKoordinate += distanz;
 
@@ -132,11 +119,21 @@ public class Spieler {
         //System.out.println(xKoordinate);
 
         //Zeichnet die Grafik des Spielers neu
-        //überprüft die Richtung in die die Grafik "schauen" soll und zeichnet diese
-        if(nachLinks) {
-            animation[naechsteFigur].zeichne(xKoordinate, yKoordinate, g);
-        } else {
-            animationRechts[naechsteFigur].zeichne(xKoordinate, yKoordinate, g);
+        //Überprüft, welcher Charakter gezeichnet werden muss
+        if(charakter == 1) {
+            //überprüft die Richtung, in die die Grafik "schauen" soll und zeichnet diese
+            if (nachLinks) {
+                animation[naechsteFigur].zeichne(xKoordinate, yKoordinate, graphics);
+            } else {
+                animationRechts[naechsteFigur].zeichne(xKoordinate, yKoordinate, graphics);
+            }
+        } else if (charakter == 2) {
+            //überprüft die Richtung, in die die Grafik "schauen" soll und zeichnet diese
+            if (nachLinks) {
+                animation2[naechsteFigur].zeichne(xKoordinate, yKoordinate, graphics);
+            } else {
+                animationRechts2[naechsteFigur].zeichne(xKoordinate, yKoordinate, graphics);
+            }
         }
 
         //Lädt das nächste Bild der Animation je nach Bewegungszustand
@@ -147,8 +144,14 @@ public class Spieler {
         }
 
         //Wählt wieder die Startfigur, wenn die Animation einmal durchlaufen wurde
-        if(naechsteFigur >= animation.length) {
-            naechsteFigur = 0;
+        if(charakter == 1) {
+            if (naechsteFigur >= animation.length) {
+                naechsteFigur = 0;
+            }
+        } else if (charakter == 2) {
+            if (naechsteFigur >= animation2.length) {
+                naechsteFigur = 0;
+            }
         }
     }
 
@@ -174,5 +177,29 @@ public class Spieler {
      */
     public ImageWir getFigur() {
         return figur;
+    }
+
+    /**
+     * Setzt den Charakter neu, wenn der Charakter aber nicht vorhanden ist, wird Charakter 1 ausgewählt
+     * zudem wird das Model entsprechend neu geladen
+     * @param charakter nummer des Charakters (1: weiblich, 2: männlich)
+     */
+    public void setCharakter(int charakter) {
+        this.charakter = charakter;
+
+        switch (charakter) {
+            case 1:
+                figur = new ImageWir("bilder/figur1/gehend_blau1.png", 95, 150, xKoordinate, yKoordinate);
+                break;
+
+            case 2:
+                figur = new ImageWir("bilder/figur1/gehend_blau1.png", 150, 150, xKoordinate, yKoordinate);
+                break;
+
+            default:
+                charakter = 1;
+                figur = new ImageWir("bilder/figur1/gehend_blau1.png", 95, 150, xKoordinate, yKoordinate);
+                break;
+        }
     }
 }
