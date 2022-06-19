@@ -1,24 +1,68 @@
-//sollte fertig sein, Datenbank dazu existiert jedoch noch nicht. Muss also noch auf die Datenbank angepasst werden
 import java.sql.*; 
 //nötige Erweiterungen um auf Datenbank zuzugreifen
 
 public class Database
-{
-	{}
-	
-	public int insertData(String spieler, int punkte)
+{	
+	Connection con;
+	String [] spieler;
+	int [] highscores;
+	public Database()
 	{
-		Connection con = null;
-		/* try, damit, wenn ein Fehler auftritt nicht der Computer abstürzt. Da hier auf einen externen Server zugegriffen wird kann das 
-		*  jedoch gut mal sein 
-		*/ 
-		try {
-			con = DriverManager.getConnection("database", "user", "password");
-			Statement stmt = con.createStatement();
-		String sql = "insert into Tabelle1 (Spieler, Punkte) values(spieler , punkte)";
-		return stmt.executeUpdate("INSERT INTO `Highscores` (`ID`, `Spieler`, `Punktezahl`) VALUES (NULL, "+ spieler +", "+ punkte+ ");");
-		}
-	catch (SQLException e) {return 0;}
+
+	}
+	
+	public void connect() //Verbindung zur Datenbank wird hergestellt
+	{
 		
+		//Zugangsdaten werden vorher festgelegt, um sie leichter ändern zu können.
+		String url = "jdbc:mysql5046.site4now.net";
+		String user = "a88aa4_hiscore";
+		String password = "Highscore1!";
+		
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			//Verbindung wird versucht herzustellen, "try{}" verhindert eine Fehlermeldung bei fehlender Verbindung
+			con = DriverManager.getConnection(url, user, password);
+		}
+		catch (SQLException e) //Überprüfung auf Fehler
+		{
+			System.out.println("SQLError");
+		}
+	}
+	
+	public void scoreSpeichern(String spieler, int Score)
+	{
+		try
+		{
+			String insertSQLcode = "INSERT INTO db_a88aa4_hiscore.highscores(`ID`, `score`, `player`) VALUES (NULL, spieler, score)";
+			Statement stmt = con.createStatement();
+			stmt.execute(insertSQLcode);
+		}
+		catch (SQLException e)
+		{
+			System.out.println("SQLError");
+		}	
+	}
+	
+	public void highscoresAuslesen()
+	{
+		try
+		{
+			String query = "SELECT `player`,`score` FROM db_a88aa4_hiscore.highscores ORDER BY `score` DESC 10";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			for(int i = 0; i < 10; i++)
+			{
+				rs.next();
+				spieler[i] = rs.getString(1);
+				highscores[i] = rs.getInt(2);
+			}
+		}
+		catch (SQLException e)
+		{
+			System.out.println("SQLError");
+		}
 	}
 }

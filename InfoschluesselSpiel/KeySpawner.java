@@ -26,7 +26,7 @@ public class KeySpawner {
 				// aus dem Array genommen und auf inaktivität überprüft
 				{ // Der inaktive Key bekommt zufällige Koordinaten
 				keys[spawnIteration % 5].koordinatenSetzen(zufallZahl(), 100);
-				spawnTimerValue = 30; // Mindestzeitabstand zwischen Spawns in FPS
+				spawnTimerValue = 20; // Mindestzeitabstand zwischen Spawns in FPS
 			}
 		}
 	}
