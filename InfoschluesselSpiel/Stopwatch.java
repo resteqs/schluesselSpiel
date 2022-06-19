@@ -18,7 +18,7 @@ public class Stopwatch
     public Stopwatch()                              //Konstruktor, startet Zeit und erstellt die Anzeige
     {
         timerStarten();
-
+        
         textAnzeige = new Text("" + Math.round(currentTime), 10, 70, 50, Color.white);
     }
 
@@ -32,11 +32,11 @@ public class Stopwatch
             {
                 currentTime = ((System.nanoTime()) - startTime)/1000000000;     //Bisschen Quick math um von den beiden Zeiten die Zeit dazwischen auszurechnen,
                 //System.out.println(currentTime);                                //also die, die seit startTimer() vergangen ist   //serieller Output, für Debuggen
-
+                
                 //Aktualisieren der Grafiken
                 GameManager gameManager = GameManager.getInstance();
                 gameManager.fensterAktualisieren(BildschirmFenster.getInstance().getWindow().getGraphics());
-            }
+                }
         });
 
         timer.start();      //startet den timer
@@ -64,6 +64,7 @@ public class Stopwatch
     public void anzeigeAktualisieren(Graphics graphics) {
         textAnzeige.zeichne("" + Math.round(currentTime), graphics);
     }
+   
 
 
 }

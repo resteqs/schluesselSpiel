@@ -13,8 +13,9 @@ public class GameManager {
     private ImageWir hintergrund;
     //Referenz auf die vergangene Spielzeit
     private Stopwatch zeit;
-
+    private boolean isPaused = false;
     private GameOverDetector checker;
+   
 
     //DoubleBuffer Attribute
     private Image doubleBufferImage;
@@ -64,6 +65,8 @@ public class GameManager {
             doubleBufferGraphics = doubleBufferImage.getGraphics();
         }
 
+        if(!isPaused) // Das Spiel läuft nur dann wenn das Spiel nicht pausiert ist
+        	{
         //Rendert neue Grafiken
         renderGrafiken(doubleBufferGraphics);
 
@@ -73,7 +76,7 @@ public class GameManager {
         //Zählt die Zeit des Spawners herunter
         spawner.spawnTimer();
 
-        checker.check(spawner.getKeys(), spieler, zeit);
+        checker.check(spawner.getKeys(), spieler, zeit);}
     }
 
     /**
@@ -86,4 +89,15 @@ public class GameManager {
         spawner.keysBewegen(graphics);
         zeit.anzeigeAktualisieren(graphics);
     }
+    public void startStop() //Eine Funktion die das Spiel je nach aktuellen Zustand pausiert, oder forstetzt
+    {
+		if(isPaused) {
+			isPaused = false; //Setzt das Spielgeschehen fort ; Siehe: fensterAktualiesieren()
+			zeit.timerStarten();
+		}else {
+			isPaused = true; // Pausiert das Spielgeschehen
+			PausMenu.getInstance().menuAnzeigen(); //Öffnet das Menu
+			zeit.timerStoppen();
+		}
+}
 }

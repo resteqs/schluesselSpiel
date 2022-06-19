@@ -8,9 +8,10 @@ public class PausMenu extends MenuWir {
 
 	private PausMenu() {
 		super(); 
+	
 	}
 
-// Gibt das singleton zurück damit andere Klassen methoden aufrufen können
+// Gibt das singleton zurï¿½ck damit andere Klassen methoden aufrufen kï¿½nnen
     public static PausMenu getInstance() {
         return singleton;
     }
@@ -20,15 +21,15 @@ public class PausMenu extends MenuWir {
 // erstellt das Pannel
 		panel = new JPanel();
 		panel.setLayout(null);
-// verändert das Hintergrundbild
+// verï¿½ndert das Hintergrundbild
 		this.hintergrundEinstellen();
-// fügt die Buttons hinzu
+// fï¿½gt die Buttons hinzu
 		this.buttonsErstellen();
-//ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen lässt
+//ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen lï¿½sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 	}
 
-// Methode die das Hintergrundbild verändert
+// Methode die das Hintergrundbild verï¿½ndert
 	public void hintergrundEinstellen() {
 		// TODO Auto-generated method stub
 		
@@ -46,14 +47,18 @@ public class PausMenu extends MenuWir {
 		buttonEndGame.regrestrireObserver(this);
 	}	
 	
-// Methode wird aufgerufen wenn einer der Buttons seinen Zustand ändert
+// Methode wird aufgerufen wenn einer der Buttons seinen Zustand ï¿½ndert
 	public void aktualiesiere(Observable veraendert) {
-// Überprüft welcher Button gedrückt wurde:
+// ï¿½berprï¿½ft welcher Button gedrï¿½ckt wurde:
 
 		if (veraendert.getName() == "buttonResumGame") {
+			 GameManager gameManager = GameManager.getInstance();
+			 gameManager.startStop();
+			 BildschirmFenster.getInstance().removeMenu();
+			 
 		}		
 		if (veraendert.getName() == "buttonEndGame") {
-// öffnet das "Game Over Menu"
+// ï¿½ffnet das "Game Over Menu"
 			GameOverMenu.getInstance().menuAnzeigen();
 		}		
 	}

@@ -30,6 +30,9 @@ public class Tastaturinput extends KeyAdapter implements KeyListener {
             case VK_RIGHT:
                 spieler = "rechts";
                 break;
+            case VK_ESCAPE:
+            	GameManager gameManager = GameManager.getInstance();
+            	gameManager.startStop();
         }
 
     }
