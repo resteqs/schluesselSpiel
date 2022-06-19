@@ -10,6 +10,8 @@ public class Stopwatch
 {
     public volatile double startTime;               // Variable, auf der die Zeit gespeichert wird, die seit dem Programmstart vergangen ist
     public volatile double currentTime;             // Zeit, die seit start des Timers vergangen ist
+
+    public double pausedTime = 0;
     private Timer timer;                            //Timer initialisieren
 
     private Text textAnzeige;                       //Anzeige für den Timer
@@ -30,7 +32,7 @@ public class Stopwatch
         {
             public void actionPerformed(ActionEvent e)          //Methode für Timer
             {
-                currentTime = ((System.nanoTime()) - startTime)/1000000000;     //Bisschen Quick math um von den beiden Zeiten die Zeit dazwischen auszurechnen,
+                currentTime = ((System.nanoTime()) - startTime)/1000000000 + pausedTime;     //Bisschen Quick math um von den beiden Zeiten die Zeit dazwischen auszurechnen,
                 //System.out.println(currentTime);                                //also die, die seit startTimer() vergangen ist   //serieller Output, für Debuggen
                 
                 //Aktualisieren der Grafiken
@@ -53,7 +55,9 @@ public class Stopwatch
 
     public void timerStoppen()
     {
+
         timer.stop();                                           // der Timer wird angehalten, macht man gewöhnlich direkt nach dem Reset
+        pausedTime = currentTime;
         System.out.println(currentTime);                        //serieller Output, für Debuggen
         System.out.println("Aus");                              //serieller Output, für Debuggen
     }
