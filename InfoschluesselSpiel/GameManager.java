@@ -42,11 +42,14 @@ public class GameManager {
         spieler = new Spieler(440, 510);//Vorläufige Position wegen aktueller Fenstergröße
 
         spawner = new KeySpawner();
+        spawner.startCountdownReset();
 
         //Starten des Timers
         zeit = new Stopwatch();
 
         checker = new GameOverDetector();
+        
+        
     }
 
     /**

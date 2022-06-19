@@ -7,6 +7,7 @@ public class KeySpawner {
 	private Key keys[];
 	private int spawnTimerValue = -1;
 	private int spawnIteration;
+	private int startCountdown; 
 	public KeySpawner(){ // erzeugt 5 inaktive Schlüsseln die auf Spawn warten
 		keys = new Key[5];
 		for(int i = 0; i < 5; i++) {
@@ -14,6 +15,10 @@ public class KeySpawner {
 		}
 	}
 	public void spawn() {
+		if(startCountdown == 0) {
+			startCountdown ++;
+			spawnTimerValue = 100;
+		}
 		// Wenn der mindestzeitabstand zwischen spawns erreicht wurde
 		if(spawnTimerValue < 0) {
 			spawnIteration ++; 
@@ -46,5 +51,8 @@ public class KeySpawner {
 
 	public Key[] getKeys() {
 		return keys;
+	}
+	public void startCountdownReset() {
+		startCountdown = 0;
 	}
 }
