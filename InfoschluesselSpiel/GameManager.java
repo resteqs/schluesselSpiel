@@ -36,7 +36,7 @@ public class GameManager {
      */
     public void spielStarten() {
         //TEST: Erstellt ein Image für den Hintergrund um diesen anzuzeigen
-        hintergrund = new ImageWir("bilder/Konzept_dark_background.jpg", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
+        hintergrund = new ImageWir("bilder/Final_background_animated.gif", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
 
         //Erstellen eines Spielers
         spieler = new Spieler(440, 510);//Vorläufige Position wegen aktueller Fenstergröße
