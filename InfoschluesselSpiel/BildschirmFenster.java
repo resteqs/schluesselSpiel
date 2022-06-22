@@ -1,5 +1,5 @@
 import java.awt.BorderLayout;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -10,6 +10,7 @@ public class BildschirmFenster {
 	private JFrame window;
 	//Speichert alle Grafikelemente die mit den jeweiligen Menüs zusammenhängen
 	private JPanel menuPanel;
+	
 	
 	private BildschirmFenster()
 	{}
@@ -25,6 +26,9 @@ public class BildschirmFenster {
 		window = new JFrame();
 		//Setzt den Titel, der über dem Fenster steht auf "Keymaster"
 		window.setTitle("Keymaster");
+		//Setzt das Icon in der Taskleiste und im Fenster
+		ImageIcon img = new ImageIcon("bilder/key.png");
+		window.setIconImage(img.getImage());
 		//Legt fest, dass das Programm aufhört, wenn das Fenster geschlossen wird
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Legt die größe fest 

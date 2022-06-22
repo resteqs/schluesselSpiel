@@ -11,10 +11,10 @@ public class Key{
 		Key(int x, int y){
 			xKoordinate = x;
 			yKoordinate = y;
-			graphik = new ImageWir("bilder/key_example.png", 108, 50, xKoordinate, yKoordinate);
+			graphik = new ImageWir("bilder/key.png", 108, 50, xKoordinate, yKoordinate);
 			inUse = false;
 			
-		}// inaktives SchlÃ¼ssel wird aktiviert und auf die ZufÃ¤lligen x Koordinaten gebracht
+		}// inaktives Schlüssel wird aktiviert und auf die Zufälligen x Koordinaten gebracht
 		public void koordinatenSetzen(int x, int y) {
 			xKoordinate = x;
 			yKoordinate = y;
