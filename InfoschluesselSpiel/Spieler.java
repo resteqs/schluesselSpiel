@@ -112,10 +112,10 @@ public class Spieler {
         xKoordinate += distanz;
 
         //Setzt die Koordinaten des Spielers sollte er aus dem Fenster hinauslaufen zurück
-        if(xKoordinate > Konstanten.SCREEN_WIDTH - figur.getBreite()) {
-            xKoordinate = (int) Konstanten.SCREEN_WIDTH - figur.getBreite();
-        } else if(xKoordinate < 0){
-            xKoordinate = 0;
+        if(xKoordinate > Konstanten.SCREEN_WIDTH - figur.getBreite() - getFigurAbweichungLinks()) {
+            xKoordinate = (int) Konstanten.SCREEN_WIDTH - figur.getBreite() - getFigurAbweichungLinks();
+        } else if(xKoordinate < -getFigurAbweichungLinks()){
+            xKoordinate = -getFigurAbweichungLinks();
         }
 
         //TEST: zeigt die Hitbox der Figur an
