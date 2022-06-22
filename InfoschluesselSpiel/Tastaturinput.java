@@ -24,10 +24,12 @@ public class Tastaturinput extends KeyAdapter implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case VK_LEFT:
+            case VK_A:
                 spieler = "links";
                 break;
 
             case VK_RIGHT:
+            case VK_D:
                 spieler = "rechts";
                 break;
             case VK_ESCAPE:
@@ -46,6 +48,8 @@ public class Tastaturinput extends KeyAdapter implements KeyListener {
         switch(e.getKeyCode()) {
             case VK_LEFT:
             case VK_RIGHT:
+            case VK_D:
+            case VK_A:
                 spieler = "anhalten";
                 break;
         }

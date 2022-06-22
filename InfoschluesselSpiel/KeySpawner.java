@@ -25,8 +25,8 @@ public class KeySpawner {
 			if(keys[spawnIteration % 5].getUse() == false) // wird der nächste Schlüssel
 				// aus dem Array genommen und auf inaktivität überprüft
 				{ // Der inaktive Key bekommt zufällige Koordinaten
-				keys[spawnIteration % 5].koordinatenSetzen(zufallZahl(), 100);
-				spawnTimerValue = 20; // Mindestzeitabstand zwischen Spawns in FPS
+				keys[spawnIteration % 5].koordinatenSetzen(zufallZahl(), 10);
+				spawnTimerValue = 15; // Mindestzeitabstand zwischen Spawns in FPS
 			}
 		}
 	}
