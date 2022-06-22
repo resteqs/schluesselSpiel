@@ -5,8 +5,11 @@ public class Spieler {
     private int xKoordinate;
     private int yKoordinate;
 
-    //Model der Figur für Größe
+    //Model der Figur für die Hitbox und zugehörige Abweichungen der Animation von den Koordinaten
     private ImageWir figur;
+    private int figurAbweichungOben;
+    private int figurAbweichungLinks;
+
     //Bilder für die Animation 1
     private ImageWir[] animation;
     private ImageWir[] animationRechts;
@@ -115,6 +118,9 @@ public class Spieler {
             xKoordinate = 0;
         }
 
+        //TEST: zeigt die Hitbox der Figur an
+        //figur.zeichne(xKoordinate + getFigurAbweichungLinks(), yKoordinate + getFigurAbweichungOben(), graphics);
+
         //TEST: zur Sichtbarkeit, dass die Koordinaten des Spielers sich wirklich verändern
         //System.out.println(xKoordinate);
 
@@ -138,7 +144,12 @@ public class Spieler {
 
         //Lädt das nächste Bild der Animation je nach Bewegungszustand
         if(distanz == 0) {
-            naechsteFigur = 0;
+            if(charakter == 1) {
+                naechsteFigur = 0;
+            } else if (charakter == 2) {
+                naechsteFigur = 6;
+            }
+
         } else {
             naechsteFigur++;
         }
@@ -189,17 +200,36 @@ public class Spieler {
 
         switch (charakter) {
             case 1:
-                figur = new ImageWir("bilder/figur1/gehend_blau1.png", 95, 150, xKoordinate, yKoordinate);
+                figur                = new ImageWir("bilder/spieler_original.png", 61, 136, xKoordinate, yKoordinate);
+                figurAbweichungOben  = 10;
+                figurAbweichungLinks = 18;
                 break;
 
             case 2:
-                figur = new ImageWir("bilder/figur1/gehend_blau1.png", 150, 150, xKoordinate, yKoordinate);
+                figur                = new ImageWir("bilder/spieler_original.png", 86, 150, xKoordinate, yKoordinate);
+                figurAbweichungOben  = 0;
+                figurAbweichungLinks = 32;
                 break;
 
             default:
-                charakter = 1;
-                figur = new ImageWir("bilder/figur1/gehend_blau1.png", 95, 150, xKoordinate, yKoordinate);
+                setCharakter(1);
                 break;
         }
+    }
+
+    /**
+     * Gibt die Abweichung der Animation zu den Koordinaten von der Oberkante zurück
+     * @return
+     */
+    public int getFigurAbweichungOben() {
+        return figurAbweichungOben;
+    }
+
+    /**
+     * Gibt die Abweichung der Animation zu den Koordinaten von der Linken Kante zurück
+     * @return
+     */
+    public int getFigurAbweichungLinks() {
+        return figurAbweichungLinks;
     }
 }
