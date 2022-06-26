@@ -9,10 +9,15 @@ public class Key{
 	private boolean inUse;
 	private int geschwindigkeit = 10;
 	private ImageWir graphik;
+	private ImageWir hitbox;
+	private int hitboxAbweichungOben;
+
 		Key(int x, int y){
 			xKoordinate = x;
 			yKoordinate = y;
 			graphik = new ImageWir("bilder/key.png", 108, 50, xKoordinate, yKoordinate);
+			hitbox  = new ImageWir("bilder/spieler_original.png", 108, 40, xKoordinate, yKoordinate);
+			hitboxAbweichungOben = 5;
 			inUse = false;
 			
 		}// inaktives Schl�ssel wird aktiviert und auf die Zuf�lligen x Koordinaten gebracht
@@ -42,8 +47,11 @@ public class Key{
 		        } 
 	        	yKoordinate += 10; //ansonsten wird er pro Frame um 10 Einheiten nach unten verschoben
 	        }
+
+			//TEST: Zeigt die Hitbox der Schluessel an
+			//hitbox.zeichne(xKoordinate, yKoordinate + getHitboxAbweichungOben(), graphics);
 			//Zeichnet die Grafik des Schlüssels neu
-	        graphik.zeichne(xKoordinate, yKoordinate, graphics);
+			graphik.zeichne(xKoordinate, yKoordinate, graphics);
 	    }
 
 	public int getxKoordinate() {
@@ -54,10 +62,13 @@ public class Key{
 		return yKoordinate;
 	}
 
-	public ImageWir getGraphik() {
-		return graphik;
+	public ImageWir getHitbox() {
+		return hitbox;
 	}
 
+	public int getHitboxAbweichungOben() {
+		return hitboxAbweichungOben;
+	}
 }
 
 
