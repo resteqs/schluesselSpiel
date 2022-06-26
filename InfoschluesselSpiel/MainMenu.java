@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class MainMenu extends MenuWir {
 // Singleton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
@@ -45,11 +44,15 @@ public class MainMenu extends MenuWir {
 		ButtonWir buttonHighScoreMenu = new ButtonWir(panel, "ButtonHighScoreMenu", "Highscore Liste", 550, 300, 200, 100);
 // Registriert sich seblst als Observer bei Button "Highscore Liste"
 		buttonHighScoreMenu.regrestrireObserver(this);
+// Erstellt Button "Spiel beenden"
+		ButtonWir buttonSpielBeenden = new ButtonWir(panel, "ButtonSpielBeenden", "Spiel beenden", 550, 200, 200, 100);
+// Registriert sich selbst als Observer beim Button "Spiel Beenden"
+		buttonSpielBeenden.regrestrireObserver(this);
 	}	
 	
 // Methode wird aufgerufen, wenn einer der Buttons seinen Zustand �ndert
 	public void aktualiesiere(Observable veraendert) {
-// �berpr�ft welcher Button gedr�ckt wurde:
+// Ueberprueft welcher Button gedrueckt wurde:
 		if (veraendert.getName() == "ButtonSpielStarten") {
 //Sorgt dafür, dass das Menü beim Spielstart verschwindet
 			BildschirmFenster.getInstance().removeMenu();
@@ -59,6 +62,10 @@ public class MainMenu extends MenuWir {
 		if (veraendert.getName() == "ButtonHighScoreMenu") {
 // �ffnet das Highscore Men�
 			HighScoreMenu.getInstance().menuAnzeigen();
+		}
+		if (veraendert.getName() == "ButtonSpielBeenden")	{
+// Schließt das Programm
+			System.exit(0);
 		}
 	}
 }
