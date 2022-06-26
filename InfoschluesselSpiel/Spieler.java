@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.Graphics;
 
 public class Spieler {
     //Koordinaten des Spielers

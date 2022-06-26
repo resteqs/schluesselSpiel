@@ -1,4 +1,5 @@
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.concurrent.ThreadLocalRandom; // Für die randomZahl
 
 import javax.swing.JFrame;

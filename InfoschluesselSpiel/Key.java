@@ -1,4 +1,5 @@
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
@@ -14,7 +15,7 @@ public class Key{
 			graphik = new ImageWir("bilder/key.png", 108, 50, xKoordinate, yKoordinate);
 			inUse = false;
 			
-		}// inaktives Schlüssel wird aktiviert und auf die Zufälligen x Koordinaten gebracht
+		}// inaktives Schlï¿½ssel wird aktiviert und auf die Zufï¿½lligen x Koordinaten gebracht
 		public void koordinatenSetzen(int x, int y) {
 			xKoordinate = x;
 			yKoordinate = y;
