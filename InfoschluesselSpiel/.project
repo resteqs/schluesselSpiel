@@ -14,4 +14,10 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>sqlConnector</name>
+			<value>file:/C:/Users/Simon%20Denk/Documents/GitHub/schluesselSpiel/InfoschluesselSpiel/lib/mysql-connector-java-8.0.29.jar</value>
+		</variable>
+	</variableList>
 </projectDescription>
