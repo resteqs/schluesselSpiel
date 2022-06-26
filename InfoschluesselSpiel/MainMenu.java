@@ -45,7 +45,7 @@ public class MainMenu extends MenuWir {
 // Registriert sich seblst als Observer bei Button "Highscore Liste"
 		buttonHighScoreMenu.regrestrireObserver(this);
 // Erstellt Button "Spiel beenden"
-		ButtonWir buttonSpielBeenden = new ButtonWir(panel, "ButtonSpielBeenden", "Spiel beenden", 550, 200, 200, 100);
+		ButtonWir buttonSpielBeenden = new ButtonWir(panel, "ButtonSpielBeenden", "Spiel beenden", 550, 500, 200, 100);
 // Registriert sich selbst als Observer beim Button "Spiel Beenden"
 		buttonSpielBeenden.regrestrireObserver(this);
 	}	
