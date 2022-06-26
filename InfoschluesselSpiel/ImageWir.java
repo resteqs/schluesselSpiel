@@ -1,5 +1,8 @@
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Window;
 import java.net.URL;
 
 public class ImageWir{
@@ -31,10 +34,11 @@ public class ImageWir{
         URL bildURL = getClass().getResource(pfad);
         icon        = new ImageIcon(bildURL);
 
-        icon.setImage(icon.getImage().getScaledInstance(breite, hoehe, java.awt.Image.SCALE_DEFAULT));
+        icon.setImage(icon.getImage().getScaledInstance(breite, hoehe, Image.SCALE_DEFAULT));
 
         //Erstellen des Labels mit Bild
         jLabel = new JLabel(icon);
+        jLabel.setBounds(xKoordinate, yKoordinate, breite, hoehe);
 
         //Sorgt dafür, dass das Bild auf dem Spielfenster angezeigt wird
         BildschirmFenster fenster = BildschirmFenster.getInstance();

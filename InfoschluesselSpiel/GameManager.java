@@ -1,7 +1,6 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import java.awt.Image;
+import java.awt.Graphics;
 
 public class GameManager {
     //Singleton-Pattern, dass nur ein GameManager existiert
@@ -35,7 +34,7 @@ public class GameManager {
      * Startet das Spiel
      */
     public void spielStarten() {
-        //TEST: Erstellt ein Image für den Hintergrund um diesen anzuzeigen
+        //Erstellt ein Image für den Hintergrund, um diesen anzuzeigen
         hintergrund = new ImageWir("bilder/Final_background_animated.gif", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
 
         //Erstellen eines Spielers
@@ -48,7 +47,8 @@ public class GameManager {
         zeit = new Stopwatch();
 
         checker = new GameOverDetector();
-        
+
+        isPaused = false;
         
     }
 
@@ -68,18 +68,19 @@ public class GameManager {
             doubleBufferGraphics = doubleBufferImage.getGraphics();
         }
 
-        if(!isPaused) // Das Spiel läuft nur dann wenn das Spiel nicht pausiert ist
-        	{
-        //Rendert neue Grafiken
-        renderGrafiken(doubleBufferGraphics);
+        if(!isPaused) // Das Spiel läuft nur dann, wenn das Spiel nicht pausiert ist
+        {
+            //Rendert neue Grafiken
+            renderGrafiken(doubleBufferGraphics);
 
-        //Zeichnet die neue Grafik
-        graphics.drawImage(doubleBufferImage, 0, 0, Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, null);
+            //Zeichnet die neue Grafik
+            graphics.drawImage(doubleBufferImage, 0, 0, Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, null);
 
-        //Zählt die Zeit des Spawners herunter
-        spawner.spawnTimer();
+            //Zählt die Zeit des Spawners herunter
+            spawner.spawnTimer();
 
-        checker.check(spawner.getKeys(), spieler, zeit);}
+            checker.check(spawner.getKeys(), spieler, zeit);
+        }
     }
 
     /**
@@ -92,10 +93,12 @@ public class GameManager {
         spawner.keysBewegen(graphics);
         zeit.anzeigeAktualisieren(graphics);
     }
+
     public void startStop() //Eine Funktion die das Spiel je nach aktuellen Zustand pausiert, oder forstetzt
     {
 		if(isPaused) {
 			isPaused = false; //Setzt das Spielgeschehen fort ; Siehe: fensterAktualiesieren()
+            BildschirmFenster.getInstance().removeMenu();
 			zeit.timerStarten();
 		}else {
 			isPaused = true; // Pausiert das Spielgeschehen
