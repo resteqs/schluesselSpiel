@@ -24,6 +24,8 @@ public class GameOverDetector {
                 	GameOverMenu.getInstance().menuAnzeigen();
 
                     zeit.timerStoppen();
+
+                    GameManager.getInstance().setGame(false);
                 	
                     //System.out.println("GAME OVER");
                 }

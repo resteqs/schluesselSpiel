@@ -30,22 +30,22 @@ public class MainMenu extends MenuWir {
 
 // Methode die das Hintergrundbild ver�ndert
 	protected void hintergrundEinstellen() {
-		// TODO Auto-generated method stub
-		
+		ImageWir hintergrund = new ImageWir("bilder/Titlescreen.gif", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
+		panel.add(hintergrund.getjLabel());
 	}	
 
 // Methode, die die Buttons erstellt
 	protected void buttonsErstellen() {
 // Erstellt Button "SpielStarten"
-		ButtonWir buttonSpielStarten = new ButtonWir(panel, "ButtonSpielStarten", "Spiel Starten", 550, 100, 200, 100);
+		ButtonWir buttonSpielStarten = new ButtonWir(panel, "ButtonSpielStarten", "Spiel Starten", 100, 200, 200, 100);
 // Registriert sich seblst als Observer beim Button "Spiel Starten"
 		buttonSpielStarten.regrestrireObserver(this);
 // Erstellt Button "Highscore Liste"
-		ButtonWir buttonHighScoreMenu = new ButtonWir(panel, "ButtonHighScoreMenu", "Highscore Liste", 550, 300, 200, 100);
+		ButtonWir buttonHighScoreMenu = new ButtonWir(panel, "ButtonHighScoreMenu", "Highscore Liste", 100, 400, 200, 100);
 // Registriert sich seblst als Observer bei Button "Highscore Liste"
 		buttonHighScoreMenu.regrestrireObserver(this);
 // Erstellt Button "Spiel beenden"
-		ButtonWir buttonSpielBeenden = new ButtonWir(panel, "ButtonSpielBeenden", "Spiel beenden", 550, 500, 200, 100);
+		ButtonWir buttonSpielBeenden = new ButtonWir(panel, "ButtonSpielBeenden", "Spiel beenden", Konstanten.SCREEN_WIDTH - 100 - 200, 400, 200, 100);
 // Registriert sich selbst als Observer beim Button "Spiel Beenden"
 		buttonSpielBeenden.regrestrireObserver(this);
 	}	

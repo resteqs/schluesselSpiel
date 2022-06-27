@@ -13,6 +13,7 @@ public class GameManager {
     //Referenz auf die vergangene Spielzeit
     private Stopwatch zeit;
     private boolean isPaused = false;
+    private boolean isGame = false;
     private GameOverDetector checker;
    
 
@@ -49,7 +50,8 @@ public class GameManager {
         checker = new GameOverDetector();
 
         isPaused = false;
-        
+
+        isGame = true;
     }
 
     /**
@@ -96,14 +98,20 @@ public class GameManager {
 
     public void startStop() //Eine Funktion die das Spiel je nach aktuellen Zustand pausiert, oder forstetzt
     {
-		if(isPaused) {
-			isPaused = false; //Setzt das Spielgeschehen fort ; Siehe: fensterAktualiesieren()
-            BildschirmFenster.getInstance().removeMenu();
-			zeit.timerStarten();
-		}else {
-			isPaused = true; // Pausiert das Spielgeschehen
-			PausMenu.getInstance().menuAnzeigen(); //Öffnet das Menu
-			zeit.timerStoppen();
-		}
-}
+        if(isGame) {
+            if (isPaused) {
+                isPaused = false; //Setzt das Spielgeschehen fort ; Siehe: fensterAktualiesieren()
+                BildschirmFenster.getInstance().removeMenu();
+                zeit.timerStarten();
+            } else {
+                isPaused = true; // Pausiert das Spielgeschehen
+                PausMenu.getInstance().menuAnzeigen(); //Öffnet das Menu
+                zeit.timerStoppen();
+            }
+        }
+    }
+
+    public void setGame(boolean game) {
+        isGame = game;
+    }
 }
