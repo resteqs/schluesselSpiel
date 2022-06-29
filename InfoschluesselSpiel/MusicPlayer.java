@@ -25,7 +25,7 @@ public class MusicPlayer {
             clip = AudioSystem.getClip();
             //Clip mit den Daten der Datei erstellen und loopen
             clip.open(inputStream);
-            clip.loop(0);
+            clip.loop(500);
         }
         catch(UnsupportedAudioFileException e) {
             e.printStackTrace();

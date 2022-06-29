@@ -12,48 +12,46 @@ public class Database
 	int [] highscores;
 	public Database()
 	{
-
+		
 	}
 	
 	public void connect() throws ClassNotFoundException //Verbindung zur Datenbank wird hergestellt
 	{
 		
-		//Zugangsdaten werden vorher festgelegt, um sie leichter Ã¤ndern zu kÃ¶nnen.
-		String url = "jdbc:mysql5046.site4now.net/highscores";
+		//Zugangsdaten werden vorher festgelegt, um sie leichter Ändern zu können.
+		String url = "jdbc:mysql5046.site4now.net/db_a88aa4_hiscore";
 		String user = "a88aa4_hiscore";
 		String password = "Highscore1!";
 		
 		try 
-		{
-			Class.forName("new com.mysql.cj.jdbc.Driver()");
-            //DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+		{	
 			//Verbindung wird versucht herzustellen, "try{}" verhindert eine Fehlermeldung bei fehlender Verbindung
 			con = DriverManager.getConnection(url, user, password);
 		}
-		catch (SQLException e) //ÜberprÃ¼fung auf Fehler
+		catch (SQLException e) //Überprüfung auf Fehler
 		{
-			System.out.println("SQLError");
+			System.out.println(e);
 		}
 	}
 	
 	public void scoreSpeichern(String spieler, int Score)
 	{
 		try
-		{	//FÃ¼gt einen neuen Datensatz mit den Werten für Spielername und Score in die Datenbank ein
+		{	//Erstellt einen String mit dem "INSERT" einen neuen Datensatz mit den Werten für Spielername und Score in die Datenbank ein
 			String insertSQLcode = "INSERT INTO db_a88aa4_hiscore.highscores(`ID`, `score`, `player`) VALUES (NULL, spieler, score)";
 			Statement stmt = con.createStatement();
 			stmt.execute(insertSQLcode);
 		}
-		catch (SQLException e)
+		catch (SQLException e) //Überprüfung auf Fehler
 		{
-			System.out.println("SQLError");
+			System.out.println(e);
 		}	
 	}
 	
 	public void highscoresAuslesen()
 	{
 		try
-		{
+		{	//erstellt eine Abfrage und sendet diese an den Server
 			String query = "SELECT `player`,`score` FROM db_a88aa4_hiscore.highscores ORDER BY `score` DESC 10";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -65,9 +63,9 @@ public class Database
 				highscores[i] = rs.getInt(2);
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException e)//Überprüfung auf Fehler
 		{
-			System.out.println("SQLError");
+			System.out.println(e);
 		}
 	}
 }

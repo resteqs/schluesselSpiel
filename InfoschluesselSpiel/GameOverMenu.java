@@ -50,7 +50,7 @@ public class GameOverMenu extends MenuWir {
 // Methode, die die Buttons erstellt
 	protected void buttonsErstellen() {
 // Erstellt Button "Zur�ck zum Hauptmenu"
-		ButtonWir buttonBackToMainMenu = new ButtonWir(panel, "backToMainMenu", "<-- Zur�ck zum Hauptmen�", 75, 550, 200, 100);
+		ButtonWir buttonBackToMainMenu = new ButtonWir(panel, "backToMainMenu", "<-- Zurueck zum Hauptmenu", 75, 550, 200, 100);
 // Registriert sich seblst als Observer beim Button "Zur�ck zum Hauptmenu"
 		buttonBackToMainMenu.regrestrireObserver(this);
 // Erstellt Button "Nochmal versuchen"

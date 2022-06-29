@@ -59,10 +59,9 @@ public class GameManager {
         isPaused = false;
 
         isGame = true;
-
         //Stoppt alte Musik, startet neue Musik
-        MusicPlayer.StopClip();
-        MusicPlayer.RunMusic("lib/menu.wav");
+        MusicPlayer.clip.stop();
+        MusicPlayer.RunMusic("lib/ingame.wav");
     }
 
     /**

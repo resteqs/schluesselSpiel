@@ -54,6 +54,7 @@ public class HighScoreMenu extends MenuWir {
 		if (veraendert.getName() == "backToMainMenu") {
 // �ffnet das Hauptmen�
 			MainMenu.getInstance().menuAnzeigen();
+			MusicPlayer.StopClip();
 		}
 	}
 }

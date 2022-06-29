@@ -6,11 +6,11 @@ public class TableWir {
 	// erstellt Variablen zum abspeichern vom Panel
 	JPanel panel;
 	
-	// erstellt ein 2D Array (ist nur vorübergehend in zukunft bekommt man ein 2D arry von der Dattenbank)
+	// erstellt ein 2D Array (ist nur vorübergehend in zukunft bekommt man ein array von der Dattenbank)
 	String[] [] data = {
-			{"Bill", "200"},
-			{"Jonas","70"},
-			{"Paul","20"},
+			{"Herr Leebmann", "420"},
+			{"Frau Schorn","42"},
+			{"Herr Heldt","3"},
 
 	};
 	
