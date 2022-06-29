@@ -12,7 +12,7 @@ public class KeySpawner {
 	private Dimension windowGroesse;
 	public KeySpawner(){ // erzeugt 7 inaktive Schlüsseln die auf Spawn warten
 		keys = new Key[Konstanten.KEYS];
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < Konstanten.KEYS; i++) {
 			keys[i] = new Key(0, 1500);
 		}
 		BildschirmFenster fenster = BildschirmFenster.getInstance();
