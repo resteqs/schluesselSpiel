@@ -21,35 +21,41 @@ public class MainMenu extends MenuWir {
 // erstellt das Pannel
 		panel = new JPanel();
 		panel.setLayout(null);
-// ver�ndert das Hintergrundbild
-		this.hintergrundEinstellen();
 // f�gt die Buttons hinzu
 		this.buttonsErstellen();
+// ver�ndert das Hintergrundbild
+		this.hintergrundEinstellen();
 //ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
+// Spielt die Musik ab
+		MusicPlayer.RunMusic("lib/menu.wav");
 	}
 
 // Methode die das Hintergrundbild ver�ndert
 	protected void hintergrundEinstellen() {
-		// TODO Auto-generated method stub
-		
+		ImageWir hintergrund = new ImageWir("bilder/Titlescreen.gif", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
+		panel.add(hintergrund.getjLabel());
 	}	
 
 // Methode, die die Buttons erstellt
 	protected void buttonsErstellen() {
 // Erstellt Button "SpielStarten"
-		ButtonWir buttonSpielStarten = new ButtonWir(panel, "ButtonSpielStarten", "Spiel Starten", 550, 100, 200, 100);
+		ButtonWir buttonSpielStarten = new ButtonWir(panel, "ButtonSpielStarten", "Spiel Starten", 100, 200, 200, 100);
 // Registriert sich seblst als Observer beim Button "Spiel Starten"
 		buttonSpielStarten.regrestrireObserver(this);
 // Erstellt Button "Highscore Liste"
-		ButtonWir buttonHighScoreMenu = new ButtonWir(panel, "ButtonHighScoreMenu", "Highscore Liste", 550, 300, 200, 100);
+		ButtonWir buttonHighScoreMenu = new ButtonWir(panel, "ButtonHighScoreMenu", "Highscore Liste", 100, 400, 200, 100);
 // Registriert sich seblst als Observer bei Button "Highscore Liste"
 		buttonHighScoreMenu.regrestrireObserver(this);
+// Erstellt Button "Spiel beenden"
+		ButtonWir buttonSpielBeenden = new ButtonWir(panel, "ButtonSpielBeenden", "Spiel beenden", Konstanten.SCREEN_WIDTH - 100 - 200, 400, 200, 100);
+// Registriert sich selbst als Observer beim Button "Spiel Beenden"
+		buttonSpielBeenden.regrestrireObserver(this);
 	}	
 	
 // Methode wird aufgerufen, wenn einer der Buttons seinen Zustand �ndert
 	public void aktualiesiere(Observable veraendert) {
-// �berpr�ft welcher Button gedr�ckt wurde:
+// Ueberprueft welcher Button gedrueckt wurde:
 		if (veraendert.getName() == "ButtonSpielStarten") {
 //Sorgt dafür, dass das Menü beim Spielstart verschwindet
 			BildschirmFenster.getInstance().removeMenu();
@@ -59,6 +65,10 @@ public class MainMenu extends MenuWir {
 		if (veraendert.getName() == "ButtonHighScoreMenu") {
 // �ffnet das Highscore Men�
 			HighScoreMenu.getInstance().menuAnzeigen();
+		}
+		if (veraendert.getName() == "ButtonSpielBeenden")	{
+// Schließt das Programm
+			System.exit(0);
 		}
 	}
 }

@@ -18,34 +18,34 @@ public class PausMenu extends MenuWir {
     
 // Methode die ein Panel erstellt
 	public void menuAnzeigen() {
-// erstellt das Pannel
+// erstellt das Panel
 		panel = new JPanel();
 		panel.setLayout(null);
-// ver�ndert das Hintergrundbild
-		this.hintergrundEinstellen();
 // f�gt die Buttons hinzu
 		this.buttonsErstellen();
-//ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen l�sst
+// ver�ndert das Hintergrundbild
+		this.hintergrundEinstellen();
+//ruft methode auf die dann das panel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 	}
 
 // Methode die das Hintergrundbild ver�ndert
 	public void hintergrundEinstellen() {
-		// TODO Auto-generated method stub
-		
+		ImageWir hintergrund = new ImageWir("bilder/PauseScreen.jpg", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
+		panel.add(hintergrund.getjLabel());
 	}
 	
 // Methode, die die Buttons erstellt.
 	protected void buttonsErstellen() {
 // Erstellt Button "Spiel Fortsetzen"
-		ButtonWir buttonResumGame = new ButtonWir(panel, "buttonResumGame", "Spiel Fortsetzen", 550, 100, 200, 100);
+		ButtonWir buttonResumGame = new ButtonWir(panel, "buttonResumGame", "Spiel Fortsetzen", 300, 500, 200, 100);
 // Registriert sich seblst als Observer beim Button "Spiel Fortsetzen"
 		buttonResumGame.regrestrireObserver(this);
 // Erstellt Button "Spiel Beenden"
-		ButtonWir buttonEndGame = new ButtonWir(panel, "buttonEndGame", "Spiel Beenden", 550, 300, 200, 100);
+		ButtonWir buttonEndGame = new ButtonWir(panel, "buttonEndGame", "Spiel Beenden", Konstanten.SCREEN_WIDTH - 300 - 200, 500, 200, 100);
 // Registriert sich seblst als Observer beim Button "Spiel Beenden"
 		buttonEndGame.regrestrireObserver(this);
-	}	
+	}
 	
 // Methode wird aufgerufen wenn einer der Buttons seinen Zustand �ndert
 	public void aktualiesiere(Observable veraendert) {
@@ -54,12 +54,11 @@ public class PausMenu extends MenuWir {
 		if (veraendert.getName() == "buttonResumGame") {
 			 GameManager gameManager = GameManager.getInstance();
 			 gameManager.startStop();
-			 BildschirmFenster.getInstance().removeMenu();
-			 
 		}		
 		if (veraendert.getName() == "buttonEndGame") {
 // �ffnet das "Game Over Menu"
 			GameOverMenu.getInstance().menuAnzeigen();
-		}		
+			GameManager.getInstance().setGame(false);
+		}
 	}
 }

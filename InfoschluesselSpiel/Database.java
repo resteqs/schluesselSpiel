@@ -1,4 +1,8 @@
-import java.sql.*; 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
 //nötige Erweiterungen um auf Datenbank zuzugreifen
 
 public class Database
@@ -11,21 +15,22 @@ public class Database
 
 	}
 	
-	public void connect() //Verbindung zur Datenbank wird hergestellt
+	public void connect() throws ClassNotFoundException //Verbindung zur Datenbank wird hergestellt
 	{
 		
 		//Zugangsdaten werden vorher festgelegt, um sie leichter ändern zu können.
-		String url = "jdbc:mysql5046.site4now.net/hisghcores";
+		String url = "jdbc:mysql5046.site4now.net/highscores";
 		String user = "a88aa4_hiscore";
 		String password = "Highscore1!";
 		
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");  
+			Class.forName("new com.mysql.cj.jdbc.Driver()");
+            //DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			//Verbindung wird versucht herzustellen, "try{}" verhindert eine Fehlermeldung bei fehlender Verbindung
 			con = DriverManager.getConnection(url, user, password);
 		}
-		catch (SQLException e) //Überprüfung auf Fehler
+		catch (SQLException e) //�berprüfung auf Fehler
 		{
 			System.out.println("SQLError");
 		}
@@ -34,7 +39,7 @@ public class Database
 	public void scoreSpeichern(String spieler, int Score)
 	{
 		try
-		{	//Fügt einen neuen Datensatz mit den Werten für Spielername und Score in die Datenbank ein
+		{	//Fügt einen neuen Datensatz mit den Werten f�r Spielername und Score in die Datenbank ein
 			String insertSQLcode = "INSERT INTO db_a88aa4_hiscore.highscores(`ID`, `score`, `player`) VALUES (NULL, spieler, score)";
 			Statement stmt = con.createStatement();
 			stmt.execute(insertSQLcode);

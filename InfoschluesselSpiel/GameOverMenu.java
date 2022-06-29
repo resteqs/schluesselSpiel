@@ -1,6 +1,6 @@
 import javax.swing.JPanel;
 
-public class GameOverMenu extends MenuWir{
+public class GameOverMenu extends MenuWir {
 // Singleton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
     private static GameOverMenu singleton = new GameOverMenu();
 // Speichert das Panel, das in diesem Menu bearbeitet wird
@@ -10,7 +10,7 @@ public class GameOverMenu extends MenuWir{
 		super(); 
 	}
 
-// Gibt das Singleton zurück, damit andere Klassen davon Methoden aufrufen können
+// Gibt das Singleton zurï¿½ck, damit andere Klassen davon Methoden aufrufen kï¿½nnen
     public static GameOverMenu getInstance() {
         return singleton;
     }
@@ -20,34 +20,45 @@ public class GameOverMenu extends MenuWir{
 // Erstellt das Pannel
 		panel = new JPanel();
 		panel.setLayout(null);
-// Verändert das Hintergrundbild
-		this.hintergrundEinstellen();
-// Fügt die Buttons hinzu
+// Fï¿½gt die Buttons hinzu
 		this.buttonsErstellen();
-// Ruft die Methode auf, die dann das Panel auf dem Bildschirmfenster anzeigen lässt
+// Verï¿½ndert das Hintergrundbild
+		this.hintergrundEinstellen();
+// Ruft die Methode auf, die dann das Panel auf dem Bildschirmfenster anzeigen lï¿½sst
 		BildschirmFenster.getInstance().addToMenu(panel);
+//Stoppt die Spielmusik (Ist noch die Menu Musik als Platzhalter)
+		MusicPlayer.StopClip();
 	}
 
-// Methode, die das Hintergrundbild verändert
+// Methode, die das Hintergrundbild verï¿½ndert
 	protected void hintergrundEinstellen() {
-				
+		ImageWir hintergrund = new ImageWir("bilder/GameoverScreen.jpg", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
+		panel.add(hintergrund.getjLabel());
 	}
 	
 // Methode, die die Buttons erstellt
 	protected void buttonsErstellen() {
-// Erstellt Button "Zurück zum Hauptmenu"
-		ButtonWir buttonBackToMainMenu = new ButtonWir(panel, "backToMainMenu", "<-- Zurück zum Hauptmenü", 75, 500, 200, 100);
-// Registriert sich seblst als Observer beim Button "Zurück zum Hauptmenu"
+// Erstellt Button "Zurï¿½ck zum Hauptmenu"
+		ButtonWir buttonBackToMainMenu = new ButtonWir(panel, "backToMainMenu", "<-- Zurï¿½ck zum Hauptmenï¿½", 75, 550, 200, 100);
+// Registriert sich seblst als Observer beim Button "Zurï¿½ck zum Hauptmenu"
 		buttonBackToMainMenu.regrestrireObserver(this);
+// Erstellt Button "Nochmal versuchen"
+		ButtonWir buttonResumeGame = new ButtonWir(panel, "resumeGame", "Nochmal versuchen", Konstanten.SCREEN_WIDTH - 75 - 200, 550, 200, 100);
+// Registriert sich selbst als Observer beim Button "Nochmal versuchen"
+		buttonResumeGame.regrestrireObserver(this);
 	}
 	
-// Methode wird aufgerufen, wenn einer der Buttons seinen Zustand ändert
+// Methode wird aufgerufen, wenn einer der Buttons seinen Zustand ï¿½ndert
 	public void aktualiesiere(Observable veraendert) {
-// Überprüft welcher Button gedrückt wurde:
+// ï¿½berprï¿½ft welcher Button gedrï¿½ckt wurde:
 
 		if (veraendert.getName() == "backToMainMenu") {
-// öffnet das Hauptmenü.
+// ï¿½ffnet das Hauptmenï¿½.
 			MainMenu.getInstance().menuAnzeigen();
-		}		
+		}
+		if(veraendert.getName() == "resumeGame") {
+			GameManager.getInstance().spielStarten();
+			BildschirmFenster.getInstance().removeMenu();
+		}
 	}
 }

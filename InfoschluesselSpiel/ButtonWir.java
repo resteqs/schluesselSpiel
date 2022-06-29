@@ -1,7 +1,5 @@
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +52,7 @@ public class ButtonWir implements Observable {
 // Der Button wird dem Panel zugewiesen
 		i.add(b1);
 
-// Kordinaten und gr��e des Buttons werden gesetzt
+// Kordinaten und groesse des Buttons werden gesetzt
 		b1.setBounds(xKordinate, yKordinate, hoehe, breite);
 		
 // zeigt den Button an
@@ -63,7 +61,7 @@ public class ButtonWir implements Observable {
 //gibt dem Button keinen Focus, sodass das Fenster weiterhin auf den Tastaturinput reagiert
 		b1.setFocusable(false);
 
-// Das ist einne Funktion die sobald sie gedr�ckt wird dei Funktion benachrichigeObserver aufruft
+// Das ist eine Funktion die sobald sie gedrueckt wird dei Funktion benachrichigeObserver aufruft
 		b1.addActionListener(e -> benachrichtigeObserver());
 	}
 
@@ -72,7 +70,7 @@ public class ButtonWir implements Observable {
 		this.observerListe.add(beobachter);
 	}
 	
-// eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, von der Observerliste l�scht
+// eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, von der Observerliste loescht
 	public void loescheObserver(Observer beobachter) {
 		this.observerListe.remove(beobachter);
 	}
@@ -84,7 +82,7 @@ public class ButtonWir implements Observable {
 		}
 	}
 	
-// eine Funktion die den Namen zur�ckgiebt
+// eine Funktion die den Namen zurueckgiebt
 	public String getName() {
 		return name;
 	}

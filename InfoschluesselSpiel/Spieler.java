@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.Graphics;
 
 public class Spieler {
     //Koordinaten des Spielers
@@ -200,9 +200,9 @@ public class Spieler {
 
         switch (charakter) {
             case 1:
-                figur                = new ImageWir("bilder/spieler_original.png", 61, 136, xKoordinate, yKoordinate);
+                figur                = new ImageWir("bilder/spieler_original.png", 55, 136, xKoordinate, yKoordinate);
                 figurAbweichungOben  = 10;
-                figurAbweichungLinks = 18;
+                figurAbweichungLinks = 21;
                 break;
 
             case 2:
