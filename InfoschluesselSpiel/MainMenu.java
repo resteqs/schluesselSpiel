@@ -1,4 +1,5 @@
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class MainMenu extends MenuWir {
 // Singleton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
