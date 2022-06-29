@@ -53,7 +53,8 @@ public class GameManager {
 
         isGame = true;
 
-        //Startet die Musik
+        //Stoppt alte Musik, startet neue Musik
+        MusicPlayer.StopClip();
         MusicPlayer.RunMusic("lib/menu.wav");
     }
 

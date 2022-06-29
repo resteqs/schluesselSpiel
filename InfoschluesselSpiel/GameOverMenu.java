@@ -26,6 +26,8 @@ public class GameOverMenu extends MenuWir {
 		this.buttonsErstellen();
 // Ruft die Methode auf, die dann das Panel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
+//Stoppt die Spielmusik (Ist noch die Menu Musik als Platzhalter)
+		MusicPlayer.StopClip();
 	}
 
 // Methode, die das Hintergrundbild ver�ndert

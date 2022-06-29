@@ -27,6 +27,8 @@ public class MainMenu extends MenuWir {
 		this.buttonsErstellen();
 //ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
+// Spielt die Musik ab
+		MusicPlayer.RunMusic("lib/menu.wav");
 	}
 
 // Methode die das Hintergrundbild ver�ndert
