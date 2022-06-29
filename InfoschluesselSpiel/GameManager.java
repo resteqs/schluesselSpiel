@@ -121,4 +121,9 @@ public class GameManager {
     public void setGame(boolean game) {
         isGame = game;
     }
+    
+    // Gibt die StopWach zurück
+    public Stopwatch stopwatchGeben() {
+    	return zeit;
+    }
 }

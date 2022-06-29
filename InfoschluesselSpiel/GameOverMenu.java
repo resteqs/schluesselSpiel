@@ -1,10 +1,19 @@
+import java.awt.Color;
+
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class GameOverMenu extends MenuWir {
 // Singleton-Pattern stellt sicher, dass es nur ein Objekt der Klasse BildschirmFenster gibt
     private static GameOverMenu singleton = new GameOverMenu();
 // Speichert das Panel, das in diesem Menu bearbeitet wird
     private JPanel panel;
+    
+    
+    JTextField tfName; 
+	String name;
+
+    
 
 	private GameOverMenu() {
 		super(); 
@@ -22,6 +31,8 @@ public class GameOverMenu extends MenuWir {
 		panel.setLayout(null);
 // Fï¿½gt die Buttons hinzu
 		this.buttonsErstellen();
+		
+		this.eingabefeldErstellen();
 // Verï¿½ndert das Hintergrundbild
 		this.hintergrundEinstellen();
 // Ruft die Methode auf, die dann das Panel auf dem Bildschirmfenster anzeigen lï¿½sst
@@ -46,7 +57,26 @@ public class GameOverMenu extends MenuWir {
 		ButtonWir buttonResumeGame = new ButtonWir(panel, "resumeGame", "Nochmal versuchen", Konstanten.SCREEN_WIDTH - 75 - 200, 550, 200, 100);
 // Registriert sich selbst als Observer beim Button "Nochmal versuchen"
 		buttonResumeGame.regrestrireObserver(this);
+		
+// Erstellt Button "Nochmal versuchen"
+		ButtonWir buttonNameEingegeben = new ButtonWir(panel, "nameEingegeben", "Fertig", 650, 200, 200, 50);
+// Registriert sich selbst als Observer beim Button "Nochmal versuchen"
+		buttonNameEingegeben.regrestrireObserver(this);
+
 	}
+	
+	public void eingabefeldErstellen() {
+        tfName = new JTextField("Name", 15);
+        // Schriftfarbe wird gesetzt
+        tfName.setForeground(Color.BLUE);
+        // Hintergrundfarbe wird gesetzt
+        tfName.setBackground(Color.white);
+        // Groese und position wird gesetzt
+        tfName.setBounds(400, 200, 200, 50);
+        // Textfeld wird Panel hinzugefügt
+        panel.add(tfName);
+	}
+	
 	
 // Methode wird aufgerufen, wenn einer der Buttons seinen Zustand ï¿½ndert
 	public void aktualiesiere(Observable veraendert) {
@@ -59,6 +89,15 @@ public class GameOverMenu extends MenuWir {
 		if(veraendert.getName() == "resumeGame") {
 			GameManager.getInstance().spielStarten();
 			BildschirmFenster.getInstance().removeMenu();
+		}
+		if(veraendert.getName() == "nameEingegeben") {
+			// Wenn der Button gedrückt wurde wird der abgefragt welcher text im Feld steht
+			name = tfName.getText();
+			// Die Stopuhr wird gefragt welche Punktzahl ereicht wurde (Ja es ist eklig, aber die Klasse Stopwatch ist kein Singelton (weis auch nicht warum))
+			String score = Double.toString(GameManager.getInstance().stopwatchGeben().currentTimeGeben());
+			// Gibt forübergehend die Werte aus
+			System.out.println(name);
+			System.out.println(score);
 		}
 	}
 }

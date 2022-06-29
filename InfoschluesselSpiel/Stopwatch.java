@@ -70,6 +70,9 @@ public class Stopwatch
         textAnzeige.zeichne("" + Math.round(currentTime), graphics);
     }
    
-
+    // Gibt die akktuelle Zeit zurück
+    public double currentTimeGeben() {
+    	return currentTime;
+    }
 
 }
