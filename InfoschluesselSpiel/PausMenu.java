@@ -54,11 +54,11 @@ public class PausMenu extends MenuWir {
 		if (veraendert.getName() == "buttonResumGame") {
 			 GameManager gameManager = GameManager.getInstance();
 			 gameManager.startStop();
-			 
 		}		
 		if (veraendert.getName() == "buttonEndGame") {
 // �ffnet das "Game Over Menu"
 			GameOverMenu.getInstance().menuAnzeigen();
+			GameManager.getInstance().setGame(false);
 		}
 	}
 }
