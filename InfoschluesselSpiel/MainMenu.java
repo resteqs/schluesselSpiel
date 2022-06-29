@@ -21,10 +21,10 @@ public class MainMenu extends MenuWir {
 // erstellt das Pannel
 		panel = new JPanel();
 		panel.setLayout(null);
-// ver�ndert das Hintergrundbild
-		this.hintergrundEinstellen();
 // f�gt die Buttons hinzu
 		this.buttonsErstellen();
+// ver�ndert das Hintergrundbild
+		this.hintergrundEinstellen();
 //ruft methode auf die dann das pannel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 // Spielt die Musik ab

@@ -21,10 +21,10 @@ public class PausMenu extends MenuWir {
 // erstellt das Panel
 		panel = new JPanel();
 		panel.setLayout(null);
-// ver�ndert das Hintergrundbild
-		this.hintergrundEinstellen();
 // f�gt die Buttons hinzu
 		this.buttonsErstellen();
+// ver�ndert das Hintergrundbild
+		this.hintergrundEinstellen();
 //ruft methode auf die dann das panel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 	}

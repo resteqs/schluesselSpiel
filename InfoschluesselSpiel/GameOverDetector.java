@@ -1,9 +1,9 @@
 public class GameOverDetector {
-
+	public GameManager gameManager;
     public GameOverDetector()
     {
-
-
+    	//Wird benötigt in check()
+    	gameManager = GameManager.getInstance();    
     }
 
 
@@ -25,7 +25,7 @@ public class GameOverDetector {
 
                     zeit.timerStoppen();
 
-                    GameManager.getInstance().setGame(false);
+                    gameManager.setGame(false);
                 	
                     //System.out.println("GAME OVER");
                 }
