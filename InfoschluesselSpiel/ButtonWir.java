@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class ButtonWir implements Observable {
-	private JPanel i;
+	private JPanel panel;
 	private String text;
 	private String name;
 	private int xKordinate;
@@ -17,11 +17,11 @@ public class ButtonWir implements Observable {
 //erzeugt eine Liste zum Speichern von allen Observern
 	private List<Observer> observerListe = new ArrayList<Observer>();
 
-	public ButtonWir(JPanel panel, String Name, String Text, int xK, int yK, int ho, int br) {
+	public ButtonWir(JPanel newPanel, String Name, String Text, int xKord, int yKord, int newHoehe, int newBreite) {
 		
 // Es werden mehrere Mitgabe werte mitgegeben und den jeweiligen Variablen zugeordnet:
 // 1. Das Panel, auf welchem der Knopf erstellt werden soll
-		i = panel;
+		panel = newPanel;
 		
 // 2. Der Name mit welchem der Button sp�ter vom Observer erkannt werden kann
 		name = Name;
@@ -30,16 +30,16 @@ public class ButtonWir implements Observable {
 		text = Text;
 		
 // 4. Die xKoordinate des Buttons
-		xKordinate = xK;
+		xKordinate = xKord;
 		
 // 5. Die yKoordinate des Buttons
-		yKordinate = yK;
+		yKordinate = yKord;
 		
 // 6. Die Hoehe des Buttons
-		hoehe = ho;
+		hoehe = newHoehe;
 		
 // 7. Die Breite des Button
-		breite = br;
+		breite = newBreite;
 		
 // Funktion wird aufgerufen welche den eigentlichen Button erstellt
 		this.neuerKnopf();
@@ -47,22 +47,22 @@ public class ButtonWir implements Observable {
 	public void neuerKnopf() {
 
 // Neuer Button wird erzeugt
-		JButton b1 = new JButton(text);
+		JButton button = new JButton(text);
 
 // Der Button wird dem Panel zugewiesen
-		i.add(b1);
+		panel.add(button);
 
 // Kordinaten und groesse des Buttons werden gesetzt
-		b1.setBounds(xKordinate, yKordinate, hoehe, breite);
+		button.setBounds(xKordinate, yKordinate, hoehe, breite);
 		
 // zeigt den Button an
-		b1.setVisible(true);
+		button.setVisible(true);
 
 //gibt dem Button keinen Focus, sodass das Fenster weiterhin auf den Tastaturinput reagiert
-		b1.setFocusable(false);
+		button.setFocusable(false);
 
 // Das ist eine Funktion die sobald sie gedrueckt wird dei Funktion benachrichigeObserver aufruft
-		b1.addActionListener(e -> benachrichtigeObserver());
+		button.addActionListener(e -> benachrichtigeObserver());
 	}
 
 // eine Funktion, die eine Klasse, welche das Interfase Observer als Referenz hat, zu der Observerliste hinzuf�gt
