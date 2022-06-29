@@ -20,10 +20,10 @@ public class GameOverMenu extends MenuWir {
 // Erstellt das Pannel
 		panel = new JPanel();
 		panel.setLayout(null);
-// Ver�ndert das Hintergrundbild
-		this.hintergrundEinstellen();
 // F�gt die Buttons hinzu
 		this.buttonsErstellen();
+// Ver�ndert das Hintergrundbild
+		this.hintergrundEinstellen();
 // Ruft die Methode auf, die dann das Panel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 	}
