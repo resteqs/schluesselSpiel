@@ -59,6 +59,9 @@ public class GameManager {
         isPaused = false;
 
         isGame = true;
+
+        //Startet die Musik
+        MusicPlayer.RunMusic("lib/menu.wav");
     }
 
     /**
