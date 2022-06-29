@@ -22,12 +22,17 @@ public class HighScoreMenu extends MenuWir {
 		panel.setLayout(null);
 // F�gt die Buttons hinzu
 		this.buttonsErstellen();
+		
+		this.bestenlisteEinstellen();
 // Ver�ndert das Hintergrundbild
 		this.hintergrundEinstellen();
 // Ruft die Methode auf, die dann das Panel auf dem Bildschirmfenster anzeigen l�sst
 		BildschirmFenster.getInstance().addToMenu(panel);
 	}
 
+	private void bestenlisteEinstellen() {
+		new TableWir(panel);
+	}
 // Methode, die das Hintergrundbild ver�ndert
 	protected void hintergrundEinstellen() {
 		ImageWir hintergrund = new ImageWir("bilder/Highscoreliste.jpg", Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT, 0, 0);
