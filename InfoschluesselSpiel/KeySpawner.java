@@ -11,8 +11,8 @@ public class KeySpawner {
 	private int startCountdown; 
 	private Dimension windowGroesse;
 	public KeySpawner(){ // erzeugt 7 inaktive Schlüsseln die auf Spawn warten
-		keys = new Key[7];
-		for(int i = 0; i < 7; i++) {
+		keys = new Key[Konstanten.KEYS];
+		for(int i = 0; i < 10; i++) {
 			keys[i] = new Key(0, 1500);
 		}
 		BildschirmFenster fenster = BildschirmFenster.getInstance();
@@ -27,11 +27,11 @@ public class KeySpawner {
 		// Wenn der mindestzeitabstand zwischen spawns erreicht wurde
 		if(spawnTimerValue < 0) {
 			spawnIteration ++; 
-			if(keys[spawnIteration % 7].getUse() == false) // wird der nächste Schlüssel
+			if(keys[spawnIteration % Konstanten.KEYS].getUse() == false) // wird der nächste Schlüssel
 				// aus dem Array genommen und auf inaktivität überprüft
 				{ // Der inaktive Key bekommt zufällige Koordinaten
-				keys[spawnIteration % 7].koordinatenSetzen(zufallZahl(), 10);
-				spawnTimerValue = 10; // Mindestzeitabstand zwischen Spawns in FPS
+				keys[spawnIteration % Konstanten.KEYS].koordinatenSetzen(zufallZahl(), 10);
+				spawnTimerValue = 7; // Mindestzeitabstand zwischen Spawns in FPS
 			}
 		}
 	}
@@ -42,7 +42,7 @@ public class KeySpawner {
 	public void keysBewegen(Graphics graphics) //siehe Klasse Key
 	{
 		spawn();
-		for(int j = 0; j <7; j++) {
+		for(int j = 0; j <Konstanten.KEYS; j++) {
 			keys[j].bewegen(graphics);
 		}
 	}
