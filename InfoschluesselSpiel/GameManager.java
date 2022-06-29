@@ -5,6 +5,8 @@ import java.awt.Graphics;
 public class GameManager {
     //Singleton-Pattern, dass nur ein GameManager existiert
     private static GameManager singleton = new GameManager();
+    //Erfragt die Fensterdaten
+    private JFrame window;
     //Referenz auf die Spielfigur des Spiels
     private Spieler spieler;
     private KeySpawner spawner;
@@ -21,7 +23,12 @@ public class GameManager {
     private Image doubleBufferImage;
     private Graphics doubleBufferGraphics;
 
-    private GameManager(){}
+    private GameManager(){
+    	//Holt sich die Instanz zum Fenster. Wird benötigt von fensterAktualisieren()
+        BildschirmFenster fenster = BildschirmFenster.getInstance();
+        window = fenster.getWindow();
+
+    }
 
     /**
      * Gibt das Singleton des GameManagers zurück
@@ -61,10 +68,6 @@ public class GameManager {
     public void fensterAktualisieren(Graphics graphics) {
         //Erstellt ein Bild des aktuellen Fensters
         if(doubleBufferImage == null) {
-            //Erfragt die Fensterdaten
-            BildschirmFenster fenster = BildschirmFenster.getInstance();
-            JFrame window             = fenster.getWindow();
-
             //Kopiert die aktuelle Grafik
             doubleBufferImage    = window.createImage(Konstanten.SCREEN_WIDTH, Konstanten.SCREEN_HEIGHT);
             doubleBufferGraphics = doubleBufferImage.getGraphics();
